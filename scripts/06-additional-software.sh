@@ -6,6 +6,7 @@ if [ -z ${BUILD_RUN:-} ]; then
 fi
 
 # FIXME: add rsyslog or some other logging facility
+# FIXME: add cronie or some other cron tool
 
 # this is needed if virtualbox should gracefully shutdown on close
 sudo emerge -v sys-power/acpid
@@ -31,7 +32,7 @@ sudo emerge -v net-misc/bridge-utils
 # configure as needed ---- the stuff below is quite optional
 
 # gentoo/funtoo related helper tools
-sudo emerge -v app-portage/ufed app-portage/eix app-portage/euses
+sudo emerge -v app-portage/ufed app-portage/eix
 
 # additional helpers/tools for the commandline
 sudo emerge -v app-misc/mc app-misc/screen app-misc/tmux app-misc/byobu sys-fs/ncdu \
