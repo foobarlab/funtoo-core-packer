@@ -7,10 +7,16 @@ fi
 
 sudo ego sync
 
-# FIXME: check which USE flags are required/optional, remove X11 related flags
+# FIXME: removed flags (only needed for X, we might not need it for this vm now): consolekit dbus policykit
+# FIXME: removed flags (unknown): i18n nfs resolvconf
+# FIXME: removed flags (better add in package.use): initramfs inotify xmp
+# TODO: /etc/portage/package.use:
+# .../intel-microcode initramfs
+# .../cronie inotify
+
+# global use flags:
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
-#USE="bindist -systemd"
-USE="acl acpi bindist cacert consolekit dbus git gold hwdb i18n icu idn initramfs inotify iptables kmod lz4 lzma lzo ncurses networkmanager nfs pci pgo pic pie policykit posix rdp readline recursion-limit resolvconf smp syslog threads tools udev udisks unicode unwind upnp utils xmp zlib -systemd"
+USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
 DATA
 
 sudo epro mix-ins +no-systemd
