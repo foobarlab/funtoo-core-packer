@@ -1,0 +1,5 @@
+.vagrant/
+packer_cache/
+/*.box
+.project
+packer.log
