@@ -14,7 +14,7 @@ DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 
-sudo emerge -vt1 sys-kernel/genkernel --exclude sys-fs/mdadm sys-fs/lvm2
+sudo emerge -vt1 sys-kernel/genkernel
 sudo mv /etc/genkernel.conf /etc/genkernel.conf.dist
 
 # FIXME insert build var ${MAKEOPTS} here?
