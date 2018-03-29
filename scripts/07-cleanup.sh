@@ -24,7 +24,7 @@ sudo emerge --depclean
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
 sudo rm -rf /var/cache/portage/distfiles/*
-sudo rm -rf /var/git/meta-repo/kits/*
+sudo rm -rf /var/git/meta-repo
 # DEBUG: disabled clearing logs for debugging
 #sudo rm -rf /var/log/*
 
