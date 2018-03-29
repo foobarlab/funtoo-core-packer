@@ -17,8 +17,7 @@ sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 # ------------------
 # BUG: open-iscsi download error while emerging genkernel, see: https://bugs.funtoo.org/browse/FL-4956
 # WORKAROUND: see: https://forums.funtoo.org/topic/1589-emerge-genkernel-failed-fetching-file/
-cd /var/cache/portage/distfiles
-sudo wget http://ftp.osuosl.org/pub/funtoo/distfiles/genkernel/open-iscsi-2.0-872.tar.gz
+sudo wget -O - http://ftp.osuosl.org/pub/funtoo/distfiles/genkernel/open-iscsi-2.0-872.tar.gz > /var/cache/portage/distfiles/open-iscsi-2.0-872.tar.gz
 sudo chown portage.portage /var/cache/portage/distfiles/open-iscsi-2.0-872.tar.gz
 sudo chmod 664 /var/cache/portage/distfiles/open-iscsi-2.0-872.tar.gz
 # ------------------
