@@ -39,6 +39,9 @@ Funtoo GNU/Linux - Experimental Vagrant box
 Build by Foobarlab
 DATA
 
+# ensure we got latest portage; BUGFIX: failing genkernel, see: https://forums.funtoo.org/topic/1589-emerge-genkernel-failed-fetching-file/
+sudo emerge -1av portage
+
 source /etc/profile
 sudo locale-gen
 sudo eselect locale set en_US.UTF-8
