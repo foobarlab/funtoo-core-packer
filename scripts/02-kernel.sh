@@ -19,6 +19,8 @@ sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 # WORKAROUND: see: https://forums.funtoo.org/topic/1589-emerge-genkernel-failed-fetching-file/
 cd /var/cache/portage/distfiles
 wget http://ftp.osuosl.org/pub/funtoo/distfiles/genkernel/open-iscsi-2.0-872.tar.gz
+sudo chown portage.portage ./open-iscsi-2.0-872.tar.gz
+sudo chmod 664 ./open-iscsi-2.0-872.tar.gz
 # ------------------
 
 sudo emerge -vt1 sys-kernel/genkernel
