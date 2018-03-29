@@ -19,6 +19,13 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
 DATA
 
+# package specific use flags go into /etc/portage/package.use
+sudo mkdir -p /etc/portage/package.use
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-defaults
+# some default settings for vbox-core
+app-admin/sudo -sendmail
+DATA
+
 sudo epro mix-ins +no-systemd
 
 # DEBUG:
