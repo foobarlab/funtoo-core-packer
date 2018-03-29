@@ -2,7 +2,7 @@
 
 export BUILD_PARENT_BOX_NAME="funtoo-stage3"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="foobarlab/funtoo-stage3"
-export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.03.21"
+export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.03.26"
 
 export BUILD_BOX_NAME="funtoo-core"
 export BUILD_BOX_DESCRIPTION="Funtoo minimal core installation"
