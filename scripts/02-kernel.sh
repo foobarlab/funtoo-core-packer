@@ -14,6 +14,13 @@ DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 
+# ------------------
+# BUG: open-iscsi download error while emerging genkernel, see: https://bugs.funtoo.org/browse/FL-4956
+# WORKAROUND: see: https://forums.funtoo.org/topic/1589-emerge-genkernel-failed-fetching-file/
+cd /var/cache/portage/distfiles
+wget http://ftp.osuosl.org/pub/funtoo/distfiles/genkernel/open-iscsi-2.0-872.tar.gz
+# ------------------
+
 sudo emerge -vt1 sys-kernel/genkernel
 sudo mv /etc/genkernel.conf /etc/genkernel.conf.dist
 
