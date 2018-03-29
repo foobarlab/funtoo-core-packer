@@ -1,6 +1,6 @@
 {
   "builders": [{
-    "boot_wait": "5s",
+    "boot_wait": "10s",
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
     "source_path": "{{user `source_path`}}",
