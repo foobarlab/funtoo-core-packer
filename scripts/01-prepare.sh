@@ -44,6 +44,7 @@ sudo locale-gen
 sudo eselect locale set en_US.UTF-8
 
 sudo emerge -1v portage
+sudo ego sync
 
 source /etc/profile
 sudo env-update
