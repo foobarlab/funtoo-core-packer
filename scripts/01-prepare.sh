@@ -27,12 +27,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-defaults
 #app-admin/sudo -sendmail
 DATA
 
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-kernel
-# some kernel related settings for vbox-core
-sys-kernel/genkernel -cryptsetup
-sys-kernel/debian-sources -binary
-DATA
-
 sudo epro mix-ins +no-systemd
 
 # DEBUG:
@@ -42,7 +36,7 @@ sudo epro list
 # TODO replace /etc/motd - use a template ...
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
-Funtoo GNU/Linux - Experimental Vagrant box
+Funtoo GNU/Linux - Experimental Vagrant box v0.0.2
 Build by Foobarlab
 DATA
 
@@ -51,7 +45,8 @@ sudo locale-gen
 sudo eselect locale set en_US.UTF-8
 
 sudo emerge -1v portage
+
+# TODO normally we would do a @world update here, but we do it after the kernel build
+
 source /etc/profile
 sudo env-update
-
-sudo emerge -vtuDN --with-bdeps=y @world
