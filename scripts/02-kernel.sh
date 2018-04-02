@@ -5,12 +5,12 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-sudo mkdir -p /etc/portage/package.use
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-kernel
-# some kernel related settings for vbox-core
-sys-kernel/genkernel -cryptsetup
-sys-kernel/debian-sources -binary
-DATA
+#sudo mkdir -p /etc/portage/package.use
+#cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-kernel
+## some kernel related settings for vbox-core
+#sys-kernel/genkernel -cryptsetup
+#sys-kernel/debian-sources -binary
+#DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 

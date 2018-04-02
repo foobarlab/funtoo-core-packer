@@ -21,9 +21,16 @@ DATA
 
 # package specific use flags go into /etc/portage/package.use dir
 sudo mkdir -p /etc/portage/package.use
+
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-defaults
 # some default settings for vbox-core
 #app-admin/sudo -sendmail
+DATA
+
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-kernel
+# some kernel related settings for vbox-core
+sys-kernel/genkernel -cryptsetup
+sys-kernel/debian-sources -binary
 DATA
 
 sudo epro mix-ins +no-systemd
@@ -44,7 +51,7 @@ sudo locale-gen
 sudo eselect locale set en_US.UTF-8
 
 sudo emerge -1v portage
-sudo ego sync
-
 source /etc/profile
 sudo env-update
+
+sudo emerge -vtuDN --with-bdeps=y @world
