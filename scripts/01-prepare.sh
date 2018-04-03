@@ -40,9 +40,9 @@ Funtoo GNU/Linux - Experimental Vagrant box v0.0.2
 Build by Foobarlab
 DATA
 
-source /etc/profile
 sudo locale-gen
 sudo eselect locale set en_US.UTF-8
+source /etc/profile
 
 sudo emerge -1v portage
 
