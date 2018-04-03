@@ -14,6 +14,7 @@ DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 
+# FIXME genkernel does currently not work, see FL-4956, FL-4967
 sudo emerge -vt1 sys-kernel/genkernel
 sudo mv /etc/genkernel.conf /etc/genkernel.conf.dist
 
@@ -74,8 +75,6 @@ sudo eselect kernel list
 # FIXME this seems to work for gentoo-sources, possibly check by name to select the correct entry (must be gentoo-sources)
 sudo eselect kernel set 1
 
-# FIXME simple genkernel all did not work 
-#sudo genkernel all
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
 source /etc/profile
