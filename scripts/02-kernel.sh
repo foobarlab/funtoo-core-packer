@@ -14,7 +14,6 @@ DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 
-# FIXME genkernel does currently not work, see FL-4956, FL-4967
 sudo emerge -vt1 sys-kernel/genkernel
 sudo mv /etc/genkernel.conf /etc/genkernel.conf.dist
 
@@ -85,8 +84,8 @@ sudo env-update
 #sudo emerge --depclean
 
 # FIXME this is probably not needed anymore:
-sudo emerge -v1 app-admin/eclean-kernel
-sudo eclean-kernel -n 1
+#sudo emerge -v1 app-admin/eclean-kernel
+#sudo eclean-kernel -n 1
 # FIXME use eclean-kernel with --destructive (-d) to force unmerging debian-sources
 
 
