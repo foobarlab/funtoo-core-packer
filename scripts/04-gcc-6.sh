@@ -8,7 +8,9 @@ fi
 # install gcc version 6.4.0
 # see: https://wiki.gentoo.org/wiki/Upgrading_GCC
 
+# FIXME: move GCC_VERSION as BUILD_GCC_VERSION to config.sh for unified configuration
 GCC_VERSION="6.4.0"
+
 sudo mkdir -p /etc/portage/package.unmask
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/gcc
 =sys-devel/gcc-GCC_VERSION
