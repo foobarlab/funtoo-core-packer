@@ -41,6 +41,9 @@ sudo emerge -v app-misc/mc app-misc/screen app-misc/tmux app-misc/byobu sys-fs/n
 # additional tools for status monitoring
 sudo emerge -v sys-process/htop net-analyzer/iptraf-ng sys-process/glances
 
+# TODO add localepurge?
+# TODO add spectre-metdown-checker in /usr/local/src? (git clone https://github.com/speed47/spectre-meltdown-checker.git)
+
 # DEBUG: show eselect options
 # FIXME: configure as needed with eselect
 sudo eselect
