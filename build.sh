@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-. config.sh
+echo "Executing $0 ..."
+
+. config.sh quiet
 
 command -v vagrant >/dev/null 2>&1 || { echo "Command 'vagrant' required but it's not installed.  Aborting." >&2; exit 1; }
 command -v packer >/dev/null 2>&1 || { echo "Command 'packer' required but it's not installed.  Aborting." >&2; exit 1; }
@@ -52,8 +54,8 @@ else
 	echo "Downloading default private key ..."
 	wget https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant -O keys/vagrant
 	if [ $? -ne 0 ]; then
-        echo "Could not download the private key. Exit code from wget was $?."
-        exit 1
+    	echo "Could not download the private key. Exit code from wget was $?."
+    	exit 1
     fi
 fi
 
@@ -65,9 +67,13 @@ else
 	wget https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub -O keys/vagrant.pub
 	if [ $? -ne 0 ]; then
         echo "Could not download the public key. Exit code from wget was $?."
-        exit 1
-    fi
+		exit 1
+	fi
 fi
+
+# TODO include version info from file (copy to scripts?)
+
+. config.sh
 
 export PACKER_LOG_PATH="$PWD/packer.log"
 export PACKER_LOG="1"
@@ -89,8 +95,8 @@ then
     vagrant --provision up || true
     echo "Exporting base box ..."
     vagrant package --output "$BUILD_OUTPUT_FILE"
-	echo "Removing temporary box file ..."
-	rm -f  "$BUILD_OUTPUT_FILE_TEMP"
+	#echo "Removing temporary box file ..."
+	#rm -f  "$BUILD_OUTPUT_FILE_TEMP"
 else
     echo "There is no box file '$BUILD_OUTPUT_FILE_TEMP' in the current directory."
     exit 1

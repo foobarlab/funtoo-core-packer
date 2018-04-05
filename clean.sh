@@ -1,5 +1,7 @@
 #!/bin/bash -ue
 
+command -v vagrant >/dev/null 2>&1 || { echo "Command 'vagrant' required but it's not installed.  Aborting." >&2; exit 1; }
+
 . config.sh
 
 echo "Suspending any running instances ..."
@@ -18,4 +20,8 @@ echo "Deleting any box file ..."
 rm -f *.box || true
 echo "Cleanup old logs ..."
 rm -f packer.log || true
+echo "Cleanup broken wget downloads ..."
+rm -f download || true
+echo "Cleanup sensitive information ..."
+rm -f ./vagrant-cloud-* || true
 echo "All done. You may now run './build.sh' to build a new box."

@@ -4,6 +4,7 @@
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
     "source_path": "{{user `source_path`}}",
+    "hard_drive_interface": "sata",
     "guest_additions_mode": "attach",
     "headless": "{{user `headless`}}",
     "ssh_username": "{{user `username`}}",
@@ -11,7 +12,7 @@
     "ssh_wait_timeout": "30s",
     "ssh_pty": true,
     "ssh_private_key_file": "keys/vagrant",
-    "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+    "shutdown_command": "shutdown -hP now",
     "vboxmanage":[
         ["modifyvm","{{.Name}}","--memory","{{user `memory`}}"],
         ["modifyvm","{{.Name}}","--cpus","{{user `cpus`}}"],
@@ -21,23 +22,22 @@
         ["modifyvm","{{.Name}}","--rtcuseutc","on"]
       ]
   }],
-  "provisioners": [
-    {
+  "provisioners": [{
       "destination": "/tmp",
       "source": "scripts",
       "type": "file"
-    },
-	{
+  },
+  {
       "type": "shell",
       "script": "provision.sh",
       "environment_vars": [
           "SCRIPTS=/tmp",
           "MAKEOPTS=-j{{user `cpus`}}",
+          "TIMEZONE=UTC",
           "BUILD_RUN=true"
       ],
       "expect_disconnect": false
-  	}
-  ],
+  }],
   "description": "{{user `box_description`}}",
   "post-processors": [{
     "type": "vagrant",
@@ -45,9 +45,8 @@
     "output": "{{user `output_file`}}"
   }],
   "variables": {
-  	"home": "{{env `HOME`}}",
-  	"source_path": "{{env `BUILD_PARENT_OVF`}}",
-  	"output_file": "{{env `BUILD_OUTPUT_FILE_TEMP`}}",
+    "source_path": "{{env `BUILD_PARENT_OVF`}}",
+    "output_file": "{{env `BUILD_OUTPUT_FILE_TEMP`}}",
     "box_description": "{{env `BUILD_BOX_DESCRIPTION`}}",
     "guest_os_type": "{{env `BUILD_GUEST_TYPE`}}",
     "vm_name": "{{env `BUILD_BOX_NAME`}}",
