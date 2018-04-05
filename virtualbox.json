@@ -32,7 +32,6 @@
       "environment_vars": [
           "SCRIPTS=/tmp",
           "MAKEOPTS=-j{{user `cpus`}}",
-          "TIMEZONE=UTC",
           "BUILD_RUN=true"
       ],
       "expect_disconnect": false
