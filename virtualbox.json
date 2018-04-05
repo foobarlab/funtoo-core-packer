@@ -11,7 +11,7 @@
     "ssh_wait_timeout": "30s",
     "ssh_pty": true,
     "ssh_private_key_file": "keys/vagrant",
-    "shutdown_command": "shutdown -hP now",
+    "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
     "vboxmanage":[
         ["modifyvm","{{.Name}}","--memory","{{user `memory`}}"],
         ["modifyvm","{{.Name}}","--cpus","{{user `cpus`}}"],
