@@ -22,6 +22,6 @@ export BUILD_BOX_DESCRIPTION="$BUILD_BOX_NAME build @$(date --iso-8601=seconds)"
 if [ $# -eq 0 ]; then
 	echo "Executing $0 ..."
 	echo "=== Build settings ============================================================="
-	env | grep BUILD_
+	env | grep BUILD_ | sort
 	echo "================================================================================"
 fi
