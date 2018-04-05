@@ -4,7 +4,6 @@
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
     "source_path": "{{user `source_path`}}",
-    "hard_drive_interface": "sata",
     "guest_additions_mode": "attach",
     "headless": "{{user `headless`}}",
     "ssh_username": "{{user `username`}}",
