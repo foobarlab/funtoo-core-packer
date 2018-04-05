@@ -35,12 +35,14 @@ sudo emerge -v net-misc/bridge-utils
 sudo emerge -v app-portage/ufed app-portage/eix
 
 # additional helpers/tools for the commandline
+# TODO some more cmdline helpers: dig, mtr, HTTPie, aria2, ripgrep, exa, fzf, icdiff, progress, pv, Diffoscope
 sudo emerge -v app-misc/mc app-misc/screen app-misc/tmux app-misc/byobu sys-fs/ncdu \
 			   www-client/links net-ftp/ncftp app-admin/apg app-shells/bash-completion
 
 # additional tools for status monitoring
 sudo emerge -v sys-process/htop net-analyzer/iptraf-ng sys-process/glances
 
+# TODO add zsh? (also include http://ohmyz.sh ?)
 # TODO add localepurge?
 # TODO add spectre-metdown-checker in /usr/local/src? (git clone https://github.com/speed47/spectre-meltdown-checker.git)
 
