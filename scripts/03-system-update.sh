@@ -7,5 +7,7 @@ fi
 
 sudo emerge -vtuDN --with-bdeps=y @world
 
+sudo etc-update --preen
+
 sudo env-update
 source /etc/profile
