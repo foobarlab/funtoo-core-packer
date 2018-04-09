@@ -62,7 +62,8 @@ DATA
 sudo env-update
 source /etc/profile
 
-sudo emerge -vt  sys-firmware/intel-microcode sys-apps/iucode_tool
+sudo emerge -vt sys-kernel/linux-firmware sys-firmware/intel-microcode sys-apps/iucode_tool
+
 sudo emerge -v sys-kernel/gentoo-sources
 
 # FIXME eselect first kernel entry (this seems to work for gentoo-sources, could also be selected by name)
