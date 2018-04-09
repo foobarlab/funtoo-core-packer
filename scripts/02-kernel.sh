@@ -41,8 +41,8 @@ MULTIPATH="no"
 ISCSI="no"
 UNIONFS="no"
 BTRFS="no"
-FIRMWARE="yes"
-FIRMWARE_SRC="/lib/firmware"
+FIRMWARE="no"
+#FIRMWARE_SRC="/lib/firmware"
 DISKLABEL="yes"
 BOOTLOADER=""	# grub not needed, we will use boot-update
 TMPDIR="/var/tmp/genkernel"
@@ -62,11 +62,11 @@ DATA
 sudo env-update
 source /etc/profile
 
-# NOTE: including binary blobs into kernel can violate GPL2 
+# NOTE: including binary blobs into kernel might violate GPL2 
 #sudo emerge -vt sys-kernel/linux-firmware
 
-# include cpu microcode
-sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
+# NOTE: including cpu microcode might be license restricted
+#sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
 sudo emerge -v sys-kernel/gentoo-sources
 

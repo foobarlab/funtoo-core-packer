@@ -16,8 +16,14 @@ DATA
 # package specific use flags go into /etc/portage/package.use dir
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
-# default package flags for vbox
+# default package use flags for vbox
 DATA
+
+## package specific license flags go into /etc/portage/package.license dir
+#sudo mkdir -p /etc/portage/package.license
+#cat <<'DATA' | sudo tee -a /etc/portage/package.license/intel-microcode
+#sys-firmware/intel-microcode intel-ucode
+#DATA
 
 sudo epro mix-ins +no-systemd
 
