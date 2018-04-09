@@ -30,7 +30,7 @@ sudo epro mix-ins +no-systemd
 # FIXME replace /etc/motd - use a template ...
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
-Funtoo GNU/Linux - Experimental Vagrant box v0.0.5 (core)
+Funtoo GNU/Linux - Experimental Vagrant box v0.0.6 (core)
 Build by Foobarlab
 DATA
 
