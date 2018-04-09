@@ -56,7 +56,7 @@ DEFAULT_KERNEL_SOURCE="/usr/src/linux"
 DEFAULT_KERNEL_CONFIG="/usr/src/kernel.config"
 KNAME="genkernel"
 REAL_ROOT="/dev/sda4"
-CMD_CALLBACK="emerge --quiet @module-rebuild"
+CMD_CALLBACK=""	# to auto compile modules after kernel use: "emerge --quiet @module-rebuild"
 DATA
 
 sudo env-update
