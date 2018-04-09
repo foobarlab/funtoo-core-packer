@@ -66,7 +66,7 @@ sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
-# remove any previous kernel
+sudo emerge -vt app-admin/eclean-kernel
 sudo eclean-kernel -n 1
 
 sudo env-update
