@@ -27,6 +27,9 @@ sudo rm -f /etc/resolv.conf.bak
 # FIXME: remove any /etc/._cfg* files as these have not been merged yet (boot.conf should not be replaced!)
 #sudo rm -f /etc/._cfg0000_boot.conf
 
+# DEBUG: list all config files needing an update
+sudo find /etc/ -name '._cfg*'
+
 sudo sync
 
 # simple way to claim some free space before export (anyway we do this additionally in a better way as a second step from inside the Vagrantfile)
