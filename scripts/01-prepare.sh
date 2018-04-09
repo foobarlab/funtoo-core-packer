@@ -31,6 +31,7 @@ sudo locale-gen
 sudo eselect locale set en_US.UTF-8
 source /etc/profile
 
+# to be safe we emerge portage before anything else
 sudo emerge -1v portage
 # normally we would do a @world update right after portage emerge, but we do it after the kernel build
 

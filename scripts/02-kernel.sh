@@ -67,11 +67,11 @@ sudo emerge -v sys-kernel/gentoo-sources
 
 # FIXME: install firmware / microcode / earlyboot ucode / ... ???
 
-# DEBUG:
-sudo eselect kernel list
-
 # FIXME this seems to work for gentoo-sources, possibly check by name to select the correct entry (must be gentoo-sources)
 sudo eselect kernel set 1
+
+# DEBUG:
+sudo eselect kernel list
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
@@ -81,6 +81,7 @@ source /etc/profile
 # FIXME unmerge/depclean debian-sources?
 # FIXME this will forcibly remove the previous kernel, most likely does not work while running the same kernel
 #sudo emerge --depclean
+sudo emerge --depclean sys-kernel/debian-sources
 
 # FIXME this is probably not needed anymore:
 #sudo emerge -v1 app-admin/eclean-kernel
@@ -95,12 +96,20 @@ source /etc/profile
 # /dev/sda3: UUID="9ed48602-fbb8-40d6-a249-0422019bbebf" TYPE="swap" PARTLABEL="swap" PARTUUID="c2f4b010-b3d1-41bd-b80c-bb335c3cf7f0"
 # /dev/sda4: UUID="97a445dd-b2b5-4b5e-ba6e-37b0b45604bc" TYPE="ext4" PARTLABEL="rootfs" PARTUUID="291e35ec-77e2-4456-ab30-89acd6a34d55"
 
+# FIXME dynamically add partuuid to boot.conf
+
+# DEBUG: show partition infos
+sudo blkid
+
+##sudo blkid -s PARTUUID -o value /dev/sda4
+##sudo blkid -s UUID -o value /dev/sda4
+
 sudo mv /etc/boot.conf /etc/boot.conf.old
 cat <<'DATA' | sudo tee -a /etc/boot.conf
 boot {
     generate grub
     default "Funtoo Linux"
-    timeout 10
+    timeout 1
 }
 display {
 	gfxmode 800x600
@@ -108,7 +117,7 @@ display {
 "Funtoo Linux" {
     kernel kernel[-v]
     initrd initramfs[-v]
-	params += real_root=/dev/sda4 root=LABEL=291e35ec-77e2-4456-ab30-89acd6a34d55 rootfstype=ext4
+	params += real_root=/dev/sda4 root=PARTLABEL=rootfs rootfstype=ext4
 }
 DATA
 

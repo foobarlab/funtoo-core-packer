@@ -32,7 +32,8 @@
       "environment_vars": [
           "SCRIPTS=/tmp",
           "MAKEOPTS=-j{{user `cpus`}}",
-          "BUILD_RUN=true"
+          "BUILD_RUN=true",
+          "BUILD_GCC_VERSION={{user `gcc_version`}}"
       ],
       "expect_disconnect": false
   }],
@@ -50,6 +51,7 @@
     "vm_name": "{{env `BUILD_BOX_NAME`}}",
     "memory": "{{env `BUILD_GUEST_MEMORY`}}",
     "cpus": "{{env `BUILD_GUEST_CPUS`}}",
+    "gcc_version": "{{env `BUILD_GCC_VERSION`}}",
     "headless": "true",
     "username": "vagrant",
     "password": "vagrant"
