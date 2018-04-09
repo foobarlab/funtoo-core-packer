@@ -68,14 +68,15 @@ source /etc/profile
 # NOTE: including cpu microcode might be license restricted
 #sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
-sudo emerge -v sys-kernel/gentoo-sources
+## FIXME gentoo-sources skipped because of license dependencies
+#sudo emerge -v sys-kernel/gentoo-sources
 
-# FIXME eselect first kernel entry (this seems to work for gentoo-sources, could also be selected by name)
-sudo eselect kernel set 1
+## FIXME eselect first kernel entry (this seems to work for gentoo-sources, could also be selected by name)
+#sudo eselect kernel set 1
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
-sudo emerge --depclean sys-kernel/debian-sources
+#sudo emerge --depclean sys-kernel/debian-sources
 
 sudo env-update
 source /etc/profile
