@@ -8,26 +8,18 @@ fi
 sudo env-update
 source /etc/profile
 
-# FIXME cleanup old gcc (if new gcc was compiled)
-
-# FIXME completely remove kernel sources?
-#cd /usr/src/linux && sudo make distclean
-
-# FIXME forcibly remove debian-sources?
-
-# FIXME is /etc/resolv.conf needed?
-
-# FIXME ensure we only got the newest kernel installed
-#sudo emerge -vt app-admin/eclean-kernel
-#sudo eclean-kernel -n 1
-
-#sudo emerge --depclean
+sudo emerge --depclean
 
 sudo emerge -vt sys-boot/boot-update
 sudo boot-update
 
+cd /usr/src/linux && sudo make distclean
+
+sudo rm -rf /usr/src/linux-debian-sources-*
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
+
+# FIXME: disabled below temporarily for debugging
 #sudo rm -rf /var/cache/portage/distfiles/*
 #sudo rm -rf /var/git/meta-repo
 #sudo rm -rf /var/log/*
