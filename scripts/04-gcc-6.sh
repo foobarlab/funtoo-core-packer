@@ -45,7 +45,7 @@ sudo emerge --depclean sys-devel/gcc
 # DEBUG:
 #sudo gcc-config --list-profiles
 
-# FIXME not needed as we do a complete rebuild ...
+# not needed as we do a complete rebuild:
 #sudo revdep-rebuild --library 'libstdc++.so.6' -- --exclude gcc
 
 sudo env-update
