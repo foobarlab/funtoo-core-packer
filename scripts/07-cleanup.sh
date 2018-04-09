@@ -8,12 +8,11 @@ fi
 sudo env-update
 source /etc/profile
 
-sudo etc-update --preen
-
 sudo emerge --depclean
 
-sudo emerge -vt sys-boot/boot-update
 sudo boot-update
+
+sudo etc-update --preen
 
 cd /usr/src/linux && sudo make distclean
 
