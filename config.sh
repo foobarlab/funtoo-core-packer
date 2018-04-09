@@ -5,7 +5,7 @@ export BUILD_BOX_VERSION="0.0.5"	# FIXME: put this into separate file to read fr
 
 export BUILD_PARENT_BOX_NAME="funtoo-stage3"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="foobarlab/funtoo-stage3"
-export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.03.26"
+export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.04.07"
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 export BUILD_GUEST_CPUS="8"
