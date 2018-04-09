@@ -4,7 +4,7 @@
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
     "source_path": "{{user `source_path`}}",
-    "guest_additions_mode": "attach",
+    "guest_additions_mode": "disable",
     "headless": "{{user `headless`}}",
     "ssh_username": "{{user `username`}}",
     "ssh_password": "{{user `password`}}",
