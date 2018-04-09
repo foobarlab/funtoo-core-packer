@@ -18,3 +18,6 @@ sudo rc-update add acpid default
 # virtualbox advanced networking only, see: https://wiki.gentoo.org/wiki/VirtualBox#Gentoo_guests
 sudo emerge -v sys-apps/usermode-utilities
 sudo emerge -v net-misc/bridge-utils
+
+# some commandline helpers
+sudo emerge -v sys-fs/ncdu sys-process/htop app-portage/ufed app-misc/screen app-misc/mc
