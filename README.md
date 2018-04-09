@@ -1,12 +1,11 @@
-# Funtoo core Vagrant box
+# Funtoo Core Vagrant box
 
 This is a minimal core Funtoo Linux that is packaged into a Vagrant box file. Currently only a VirtualBox version is provided.
-
-Currently development is quite experimental and is not yet ready for stable use. 
+It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funtoo-stage3-packer).
 
 ### What's included?
 
- - Minimal core Funtoo Linux installation derived from a [stage3 box](https://github.com/foobarlab/funtoo-stage3-packer)
+ - Minimal Funtoo Linux installation with core flavor
  - Architecture: pure64, generic_64 (currently only tested on Intel CPU)
  - 100 GB dynamic sized HDD image (ext4)
  - Timezone: ```UTC```
