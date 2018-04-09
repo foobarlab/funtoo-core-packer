@@ -62,21 +62,9 @@ DATA
 sudo env-update
 source /etc/profile
 
-# NOTE: including binary blobs into kernel might violate GPL2 
-#sudo emerge -vt sys-kernel/linux-firmware
-
-# NOTE: including cpu microcode might be license restricted
-#sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
-
-## FIXME gentoo-sources skipped because of license dependencies
-#sudo emerge -v sys-kernel/gentoo-sources
-
-## FIXME eselect first kernel entry (this seems to work for gentoo-sources, could also be selected by name)
-#sudo eselect kernel set 1
+sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
-
-#sudo emerge --depclean sys-kernel/debian-sources
 
 sudo env-update
 source /etc/profile

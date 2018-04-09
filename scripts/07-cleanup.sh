@@ -16,26 +16,24 @@ sudo etc-update --preen
 
 cd /usr/src/linux && sudo make distclean
 
-# NOTE: not cleaning because we do not use gentoo-sources
-#sudo rm -rf /usr/src/linux-debian-sources-*
-
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
+sudo rm -rf /var/cache/portage/distfiles/*
+sudo rm -rf /var/git/meta-repo
+sudo rm -rf /var/log/*
 
-# FIXME: disabled below temporarily for debugging
-#sudo rm -rf /var/cache/portage/distfiles/*
-#sudo rm -rf /var/git/meta-repo
-#sudo rm -rf /var/log/*
-
-# FIXME: remove any /etc/._cfg* files as these have not been merged yet (boot.conf should not be replaced!)
+# prevent replace of our boot.conf
 sudo rm -f /etc/._cfg0000_boot.conf
 
 # DEBUG: list all remaining config files needing an update
 sudo find /etc/ -name '._cfg*'
 
+# auto-merge all remaining config files
+sudo etc-update --automode -5 
+
 sudo sync
 
-# simple way to claim some free space before export (anyway we do this additionally in a better way as a second step from inside the Vagrantfile)
+# simple way to claim some free space before export
 sudo bash -c 'dd if=/dev/zero of=/EMPTY bs=1M 2>/dev/null' || true
 sudo rm -f /EMPTY
 

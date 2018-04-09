@@ -10,9 +10,6 @@ if [ -z ${BUILD_GCC_VERSION:-} ]; then
 	exit 0
 fi
 
-# we rebuild everything (recommended when gcc was compiled)
-# see: https://wiki.gentoo.org/wiki/Upgrading_GCC
-
 sudo emerge --emptytree @system
 sudo etc-update --preen
 
