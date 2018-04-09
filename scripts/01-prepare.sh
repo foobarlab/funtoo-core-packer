@@ -14,9 +14,8 @@ DATA
 
 # package specific use flags go into /etc/portage/package.use dir
 sudo mkdir -p /etc/portage/package.use
-
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
-# some default package settings for vbox
+# default package flags for vbox
 DATA
 
 sudo epro mix-ins +no-systemd
@@ -35,5 +34,5 @@ source /etc/profile
 sudo emerge -1v portage
 # normally we would do a @world update right after portage emerge, but we do it after the kernel build
 
-source /etc/profile
 sudo env-update
+source /etc/profile

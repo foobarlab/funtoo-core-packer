@@ -7,5 +7,5 @@ fi
 
 sudo emerge -vtuDN --with-bdeps=y @world
 
-source /etc/profile
 sudo env-update
+source /etc/profile

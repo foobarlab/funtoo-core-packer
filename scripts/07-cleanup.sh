@@ -5,6 +5,11 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+sudo env-update
+source /etc/profile
+
+# FIXME cleanup old gcc (if new gcc was compiled)
+
 # FIXME completely remove kernel sources?
 #cd /usr/src/linux && sudo make distclean
 

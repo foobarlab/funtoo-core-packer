@@ -6,8 +6,8 @@ if [ -z ${BUILD_RUN:-} ]; then
 fi
 
 sudo mkdir -p /etc/portage/package.use
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-kernel
-# some kernel related settings for vbox-core
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
+# kernel related flags
 sys-kernel/genkernel -cryptsetup
 sys-kernel/debian-sources -binary
 DATA
@@ -60,8 +60,8 @@ REAL_ROOT="/dev/sda4"
 CMD_CALLBACK="emerge --quiet @module-rebuild"
 DATA
 
-source /etc/profile
 sudo env-update
+source /etc/profile
 
 sudo emerge -v sys-kernel/gentoo-sources
 
@@ -75,8 +75,8 @@ sudo eselect kernel set 1
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
-source /etc/profile
 sudo env-update
+source /etc/profile
 	
 # FIXME unmerge/depclean debian-sources?
 # FIXME this will forcibly remove the previous kernel, most likely does not work while running the same kernel
