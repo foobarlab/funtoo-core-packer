@@ -17,7 +17,6 @@ sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 sudo emerge -vt1 sys-kernel/genkernel
 sudo mv /etc/genkernel.conf /etc/genkernel.conf.dist
 
-# FIXME include firmware/microcode?
 cat <<'DATA' | sudo tee -a /etc/genkernel.conf
 INSTALL="yes"
 OLDCONFIG="yes"
@@ -42,8 +41,8 @@ MULTIPATH="no"
 ISCSI="no"
 UNIONFS="no"
 BTRFS="no"
-FIRMWARE="no"
-#FIRMWARE_SRC="/lib/firmware"
+FIRMWARE="yes"
+FIRMWARE_SRC="/lib/firmware"
 DISKLABEL="yes"
 BOOTLOADER=""	# grub not needed, we will use boot-update
 TMPDIR="/var/tmp/genkernel"
@@ -63,46 +62,18 @@ DATA
 sudo env-update
 source /etc/profile
 
+sudo emerge -vt  sys-firmware/intel-microcode sys-apps/iucode_tool
 sudo emerge -v sys-kernel/gentoo-sources
 
-# FIXME: install firmware / microcode / earlyboot ucode / ... ???
-
-# FIXME this seems to work for gentoo-sources, possibly check by name to select the correct entry (must be gentoo-sources)
+# FIXME eselect first kernel entry (this seems to work for gentoo-sources, could also be selected by name)
 sudo eselect kernel set 1
-
-# DEBUG:
-sudo eselect kernel list
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
-sudo env-update
-source /etc/profile
-	
-# FIXME unmerge/depclean debian-sources?
-# FIXME this will forcibly remove the previous kernel, most likely does not work while running the same kernel
-#sudo emerge --depclean
 sudo emerge --depclean sys-kernel/debian-sources
 
-# FIXME this is probably not needed anymore:
-#sudo emerge -v1 app-admin/eclean-kernel
-#sudo eclean-kernel -n 1
-# FIXME use eclean-kernel with --destructive (-d) to force unmerging debian-sources
-
-
-# Disklabels from stage 3 install:
-# FIXME get these from blkid and insert dynamically into boot.conf
-# /dev/sda1: UUID="8be39851-51f6-4f7c-a9d3-c3a36da077db" TYPE="ext2" PARTLABEL="boot" PARTUUID="f412838c-a07a-4bc0-b342-73e27be5241f"
-# /dev/sda2: PARTLABEL="BIOS boot partition" PARTUUID="5e8ed02e-3d2e-428d-92af-39050dca26f2"
-# /dev/sda3: UUID="9ed48602-fbb8-40d6-a249-0422019bbebf" TYPE="swap" PARTLABEL="swap" PARTUUID="c2f4b010-b3d1-41bd-b80c-bb335c3cf7f0"
-# /dev/sda4: UUID="97a445dd-b2b5-4b5e-ba6e-37b0b45604bc" TYPE="ext4" PARTLABEL="rootfs" PARTUUID="291e35ec-77e2-4456-ab30-89acd6a34d55"
-
-# FIXME dynamically add partuuid to boot.conf
-
-# DEBUG: show partition infos
-sudo blkid
-
-##sudo blkid -s PARTUUID -o value /dev/sda4
-##sudo blkid -s UUID -o value /dev/sda4
+sudo env-update
+source /etc/profile
 
 sudo mv /etc/boot.conf /etc/boot.conf.old
 cat <<'DATA' | sudo tee -a /etc/boot.conf
