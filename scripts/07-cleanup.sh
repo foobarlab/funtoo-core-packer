@@ -17,7 +17,9 @@ sudo boot-update
 
 cd /usr/src/linux && sudo make distclean
 
-sudo rm -rf /usr/src/linux-debian-sources-*
+# NOTE: not cleaning because we do not use gentoo-sources
+#sudo rm -rf /usr/src/linux-debian-sources-*
+
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
 
@@ -27,9 +29,9 @@ sudo rm -f /etc/resolv.conf.bak
 #sudo rm -rf /var/log/*
 
 # FIXME: remove any /etc/._cfg* files as these have not been merged yet (boot.conf should not be replaced!)
-#sudo rm -f /etc/._cfg0000_boot.conf
+sudo rm -f /etc/._cfg0000_boot.conf
 
-# DEBUG: list all config files needing an update
+# DEBUG: list all remaining config files needing an update
 sudo find /etc/ -name '._cfg*'
 
 sudo sync
