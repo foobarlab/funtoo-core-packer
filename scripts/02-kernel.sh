@@ -17,7 +17,6 @@ sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 sudo emerge -vt1 sys-kernel/genkernel
 sudo mv /etc/genkernel.conf /etc/genkernel.conf.dist
 
-# FIXME insert build var ${MAKEOPTS} here?
 # FIXME include firmware/microcode?
 cat <<'DATA' | sudo tee -a /etc/genkernel.conf
 INSTALL="yes"

@@ -7,13 +7,6 @@ fi
 
 sudo ego sync
 
-# FIXME: removed flags (only needed for X, we might not need it for this vm now): consolekit dbus policykit
-# FIXME: removed flags (unknown): i18n nfs resolvconf
-# FIXME: removed flags (better add in package.use): initramfs inotify xmp
-# TODO: /etc/portage/package.use:
-# .../intel-microcode initramfs
-# .../cronie inotify
-
 # global use flags:
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
@@ -22,21 +15,16 @@ DATA
 # package specific use flags go into /etc/portage/package.use dir
 sudo mkdir -p /etc/portage/package.use
 
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-core-defaults
-# some default settings for vbox-core
-#app-admin/sudo -sendmail
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
+# some default package settings for vbox
 DATA
 
 sudo epro mix-ins +no-systemd
 
-# DEBUG:
-sudo epro show
-sudo epro list
-
-# TODO replace /etc/motd - use a template ...
+# FIXME replace /etc/motd - use a template ...
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
-Funtoo GNU/Linux - Experimental Vagrant box v0.0.4
+Funtoo GNU/Linux - Experimental Vagrant box v0.0.5 (core)
 Build by Foobarlab
 DATA
 
@@ -45,8 +33,7 @@ sudo eselect locale set en_US.UTF-8
 source /etc/profile
 
 sudo emerge -1v portage
-
-# TODO normally we would do a @world update here, but we do it after the kernel build
+# normally we would do a @world update right after portage emerge, but we do it after the kernel build
 
 source /etc/profile
 sudo env-update

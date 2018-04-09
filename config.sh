@@ -19,6 +19,8 @@ export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME.tmp.box"
 
 export BUILD_BOX_DESCRIPTION="$BUILD_BOX_NAME build @$(date --iso-8601=seconds)"
 
+export BUILD_GCC_VERSION="6.4.0"	# specify gcc version to install, otherwise if you dont want to upgrade gcc just leave this empty
+
 if [ $# -eq 0 ]; then
 	echo "Executing $0 ..."
 	echo "=== Build settings ============================================================="
