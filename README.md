@@ -15,12 +15,17 @@ Currently development is quite experimental and is not yet ready for stable use.
  - Kernel: debian-sources 4.12.x, stripped down for use with Virtualbox
  - Optional: move from default GCC 5.4 to another GCC version (6.4.0 tested)
  - List of additional installed software:
-    - *genkernel* with custom config
-    - *rsyslog* (logging)
-    - *cronie* (cron)
-    - *acpid* for graceful acpi shutdown
-    - *usermode-utilities* and *bridge-utils* for advanced vm networking
+    - *genkernel*
+    - *eclean-kernel*
+    - *rsyslog*
+    - *cronie*
+    - *acpid* (graceful acpi shutdown for virtualbox)
+    - *usermode-utilities* and *bridge-utils* for advanced networking
     - any additional software installed in the [stage3 box](https://github.com/foobarlab/funtoo-stage3-packer)
+    
+#### Todo
+
+ - Install virtualbox guest additions
 
 ### Download pre-build images
 
@@ -32,10 +37,28 @@ Get the latest build from Vagrant Cloud: [foobarlab/funtoo-core](https://app.vag
 
  - Install [Vagrant](https://www.vagrantup.com/) and [Packer](https://www.packer.io/)
 
-#### Build fresh Virtualbox
+#### Build a fresh Virtualbox box
 
  - Run ```./build.sh```
- 
-#### Test box file
+
+#### Quick test the box file
 
  - Run ```./test.sh```
+
+#### Upload the box to Vagrant Cloud (experimental)
+
+ - Run ```./upload.sh```
+
+### Regular use cases
+
+#### Initialize a fresh box (initial state, any modifications are lost)
+
+ - Run ```./init.sh```
+
+#### Power on the box (keeping previous state) 
+
+ - Run ```./startup.sh```
+
+## Feedback welcome
+
+Please create an issue.
