@@ -16,19 +16,19 @@ fi
 #sudo emerge -vt app-admin/eclean-kernel
 #sudo eclean-kernel -n 1
 
+#sudo emerge --depclean
+
 sudo emerge -vt sys-boot/boot-update
 sudo boot-update
 
-sudo emerge --depclean
-
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
-sudo rm -rf /var/cache/portage/distfiles/*
-sudo rm -rf /var/git/meta-repo
-sudo rm -rf /var/log/*
+#sudo rm -rf /var/cache/portage/distfiles/*
+#sudo rm -rf /var/git/meta-repo
+#sudo rm -rf /var/log/*
 
 # FIXME: remove any /etc/._cfg* files as these have not been merged yet (boot.conf should not be replaced!)
-sudo rm -f /etc/._cfg0000_boot.conf
+#sudo rm -f /etc/._cfg0000_boot.conf
 
 sudo sync
 
