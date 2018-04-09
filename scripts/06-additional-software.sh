@@ -15,13 +15,3 @@ sudo emerge -v sys-fs/zerofree
 # virtualbox advanced networking only (see: https://wiki.gentoo.org/wiki/VirtualBox#Gentoo_guests)
 sudo emerge -v sys-apps/usermode-utilities
 sudo emerge -v net-misc/bridge-utils
-
-# install vbox guest additions (these should be already attached as cdrom, see virtualbox.json)
-# FIXME: this is not working, maybe kernel config needs to be modified
-#sudo mount /mnt/cdrom
-#sudo /mnt/cdrom/VBoxLinuxAdditions.run
-#sudo umount /mnt/cdrom
-
-# install guest additions from inside the vm, see: https://wiki.gentoo.org/wiki/VirtualBox
-# FIXME: this is neither working, installs some older version (5.2.4)
-#sudo emerge -v app-emulation/virtualbox-guest-additions
