@@ -8,22 +8,22 @@ fi
 sudo env-update
 source /etc/profile
 
-sudo emerge --depclean
+sudo emerge -v --depclean
+
+sudo etc-update --preen
+sudo rm -f /etc/._cfg0000_boot.conf		# prevent replacement of our boot.conf
+sudo find /etc/ -name '._cfg*'			# DEBUG: list all remaining config files needing an update
+sudo etc-update --automode -5			# force 'auto-merge' for remaining configs 
 
 sudo boot-update
 
-sudo etc-update --preen
-sudo rm -f /etc/._cfg0000_boot.conf		# prevent replace of our boot.conf
-sudo find /etc/ -name '._cfg*'			# DEBUG: list all remaining config files needing an update
-sudo etc-update --automode -5			# auto-merge remaining configs 
-
-cd /usr/src/linux && sudo make distclean
-
-sudo rm -f /etc/resolv.conf
-sudo rm -f /etc/resolv.conf.bak
-sudo rm -rf /var/cache/portage/distfiles/*
-sudo rm -rf /var/git/meta-repo
-sudo rm -rf /var/log/*
+# TODO actual cleanup
+#cd /usr/src/linux && sudo make distclean
+#sudo rm -f /etc/resolv.conf
+#sudo rm -f /etc/resolv.conf.bak
+#sudo rm -rf /var/cache/portage/distfiles/*
+#sudo rm -rf /var/git/meta-repo
+#sudo rm -rf /var/log/*
 
 sudo sync
 
