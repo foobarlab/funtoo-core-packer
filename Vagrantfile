@@ -8,32 +8,29 @@ $script_guest_additions = <<SCRIPT
 sudo cp /usr/src/kernel.config /usr/src/linux/.config
 cd /usr/src/linux
 sudo make oldconfig
-sudo make prepare
 sudo make modules_prepare
 # copy iso and start install
 sudo mkdir -p /mnt/temp
-# DEBUG: copy for now (to keep iso file)
-#sudo mv /home/vagrant/VBoxGuestAdditions.iso /tmp
-sudo cp /home/vagrant/VBoxGuestAdditions.iso /tmp
+sudo mv /home/vagrant/VBoxGuestAdditions.iso /tmp
 sudo mount -o loop /tmp/VBoxGuestAdditions.iso /mnt/temp
 sudo /mnt/temp/VBoxLinuxAdditions.run
 sudo umount /mnt/temp
 # DEBUG:
 sudo cat /var/log/vboxadd-setup.log
-# auto-load modules
-cat <<'DATA' | sudo tee -a /etc/conf.d/modules
-modules="vboxguest vboxsf"
-DATA
+## auto-load modules:
+#cat <<'DATA' | sudo tee -a /etc/conf.d/modules
+#modules="vboxguest vboxsf"
+#DATA
 SCRIPT
 
 $script_cleanup = <<SCRIPT
-# FIXME clean kernel sources after vbox-guest-additions install
-#cd /usr/src/linux && sudo make distclean
-# FIXME remove iso file
+# clean kernel sources after vbox-guest-additions install
+cd /usr/src/linux && sudo make distclean
+# stop rsyslog to allow zerofree to proceed
+sudo /etc/init.d/rsyslog stop
 # /boot
 sudo mount -o remount,ro /dev/sda1
 sudo zerofree /dev/sda1
-# FIXME root can not be mounted (device is busy)
 # /
 sudo mount -o remount,ro /dev/sda4
 sudo zerofree /dev/sda4
@@ -41,7 +38,6 @@ sudo zerofree /dev/sda4
 sudo swapoff /dev/sda3
 sudo bash -c 'dd if=/dev/zero of=/dev/sda3 2>/dev/null' || true
 sudo mkswap /dev/sda3
-# FIXME force shutdown?
 SCRIPT
 
 Vagrant.configure("2") do |config|
