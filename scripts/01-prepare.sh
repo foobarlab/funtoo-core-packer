@@ -14,7 +14,7 @@ DATA
 
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
-# default package use flags for vbox
+# add default package use flags for vbox here
 DATA
 
 sudo epro mix-ins +no-systemd
@@ -22,7 +22,7 @@ sudo epro mix-ins +no-systemd
 # FIXME replace /etc/motd - use a template ...
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
-Funtoo GNU/Linux (core) - Experimental Vagrant box v0.0.10
+Funtoo GNU/Linux (core) - Experimental Vagrant box v0.0.12
 Build by Foobarlab
 DATA
 

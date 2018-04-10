@@ -18,15 +18,9 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
     - *eclean-kernel*
     - *rsyslog*
     - *cronie*
-    - *acpid* (graceful acpi shutdown for virtualbox)
-    - *usermode-utilities* and *bridge-utils* for advanced networking
     - *virtualbox-guest-additions*
     - commandline tools: *htop, ncdu, ufed, screen, mc*
     - any additional software installed in the [stage3 box](https://github.com/foobarlab/funtoo-stage3-packer)
-    
-#### Todo
-
- - Install virtualbox guest additions
 
 ### Download pre-build images
 

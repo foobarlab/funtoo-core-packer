@@ -17,8 +17,10 @@ sudo etc-update --automode -5			# force 'auto-merge' for remaining configs
 
 sudo boot-update
 
-# TODO actual cleanup
+# NOT cleaning kernel sources yet (we need them for guest additions installed in Vagrantfile)
 #cd /usr/src/linux && sudo make distclean
+
+# TODO actual cleanup
 #sudo rm -f /etc/resolv.conf
 #sudo rm -f /etc/resolv.conf.bak
 #sudo rm -rf /var/cache/portage/distfiles/*
