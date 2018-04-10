@@ -17,10 +17,12 @@ sudo /mnt/temp/VBoxLinuxAdditions.run
 sudo umount /mnt/temp
 # DEBUG:
 sudo cat /var/log/vboxadd-setup.log
-## auto-load modules:
-#cat <<'DATA' | sudo tee -a /etc/conf.d/modules
-#modules="vboxguest vboxsf"
-#DATA
+# add user vagrant to vboxsf group
+sudo gpasswd -a vagrant vboxsf
+# auto-load vboxsf (vboxguest already loaded by udev rule):
+cat <<'DATA' | sudo tee -a /etc/conf.d/modules
+modules="vboxsf"
+DATA
 SCRIPT
 
 $script_cleanup = <<SCRIPT
@@ -28,8 +30,8 @@ $script_cleanup = <<SCRIPT
 cd /usr/src/linux && sudo make distclean
 # stop rsyslog to allow zerofree to proceed
 sudo /etc/init.d/rsyslog stop
-# /boot
-sudo mount -o remount,ro /dev/sda1
+# /boot (initially not mounted)
+sudo mount -o ro /dev/sda1
 sudo zerofree /dev/sda1
 # /
 sudo mount -o remount,ro /dev/sda4
