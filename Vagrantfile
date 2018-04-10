@@ -15,7 +15,6 @@ sudo mv /home/vagrant/VBoxGuestAdditions.iso /tmp
 sudo mount -o loop /tmp/VBoxGuestAdditions.iso /mnt/temp
 sudo /mnt/temp/VBoxLinuxAdditions.run
 sudo umount /mnt/temp
-# DEBUG:
 sudo cat /var/log/vboxadd-setup.log
 # add user vagrant to vboxsf group
 sudo gpasswd -a vagrant vboxsf

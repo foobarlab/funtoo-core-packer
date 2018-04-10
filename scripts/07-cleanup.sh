@@ -8,7 +8,7 @@ fi
 sudo env-update
 source /etc/profile
 
-sudo emerge -v --depclean
+sudo emerge --depclean
 
 sudo etc-update --preen
 sudo rm -f /etc/._cfg0000_boot.conf		# prevent replacement of our boot.conf
@@ -17,15 +17,11 @@ sudo etc-update --automode -5			# force 'auto-merge' for remaining configs
 
 sudo boot-update
 
-# NOT cleaning kernel sources yet (we need them for guest additions installed in Vagrantfile)
-#cd /usr/src/linux && sudo make distclean
-
-# TODO actual cleanup
-#sudo rm -f /etc/resolv.conf
-#sudo rm -f /etc/resolv.conf.bak
-#sudo rm -rf /var/cache/portage/distfiles/*
-#sudo rm -rf /var/git/meta-repo
-#sudo rm -rf /var/log/*
+sudo rm -f /etc/resolv.conf
+sudo rm -f /etc/resolv.conf.bak
+sudo rm -rf /var/cache/portage/distfiles/*
+sudo rm -rf /var/git/meta-repo
+sudo rm -rf /var/log/*
 
 sudo sync
 
