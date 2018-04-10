@@ -90,6 +90,3 @@ display {
 DATA
 
 sudo boot-update
-
-# virtualbox guest tadditions
-sudo emerge -v app-emulation/virtualbox-guest-additions
