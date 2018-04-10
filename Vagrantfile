@@ -10,32 +10,19 @@ cd /usr/src/linux
 sudo make oldconfig
 sudo make prepare
 sudo make modules_prepare
-
-# copy iso and install
+# copy iso and start install
 sudo mkdir -p /mnt/temp
-
 # DEBUG: copy for now (to keep iso file)
 #sudo mv /home/vagrant/VBoxGuestAdditions.iso /tmp
 sudo cp /home/vagrant/VBoxGuestAdditions.iso /tmp
-
-# DEBUG:
-ls -la /tmp
-
 sudo mount -o loop /tmp/VBoxGuestAdditions.iso /mnt/temp
-
-# DEBUG:
-sudo ls -la /mnt/temp
-
 sudo /mnt/temp/VBoxLinuxAdditions.run
 sudo umount /mnt/temp
-
 # DEBUG:
 sudo cat /var/log/vboxadd-setup.log
-
 # auto-load modules
 cat <<'DATA' | sudo tee -a /etc/conf.d/modules
-#modules="vboxdrv vboxnetflt vboxnetadp vboxpci"
-modules="vboxguest vboxsf vboxvideo"
+modules="vboxguest vboxsf"
 DATA
 SCRIPT
 
