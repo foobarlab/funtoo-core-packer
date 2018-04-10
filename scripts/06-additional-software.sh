@@ -5,12 +5,21 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# virtualbox guest additions kernel modules
-# FIXME version 5.2.4 not fully working yet, see also FL-4658 ("Virtualbox-guest-additions 5.2.4 missing functionality")
+# virtualbox guest additions: prepare kernel
 cd /usr/src/linux
 sudo make oldconfig
 sudo make modules_prepare
-sudo emerge -v app-emulation/virtualbox-guest-additions
+
+# virtualbox guest additions kernel modules (provided by funtoo)
+## FIXME version 5.2.4 not fully working yet, see also FL-4658 ("Virtualbox-guest-additions 5.2.4 missing functionality")
+#sudo emerge -v app-emulation/virtualbox-guest-additions
+
+# virtualbox guest additions kernel modules (provided by vagrant)
+sudo mount /mnt/cdrom
+sudo /mnt/cdrom/VBoxLinuxAdditions.run
+sudo umount /mnt/cdrom
+
+# auto load vbox guest additions modules
 cat <<'DATA' | sudo tee -a /etc/conf.d/modules
 # automatically load virtualbox modules
 modules="vboxdrv vboxnetflt vboxnetadp vboxpci"
@@ -24,9 +33,11 @@ sudo rc-update add acpid default
 sudo emerge -v sys-apps/usermode-utilities
 sudo emerge -v net-misc/bridge-utils
 
+# logging facility
 sudo emerge -v app-admin/rsyslog
 sudo rc-update add rsyslog default
-	
+
+# cron
 sudo emerge -v sys-process/cronie
 sudo rc-update add cronie default
 
