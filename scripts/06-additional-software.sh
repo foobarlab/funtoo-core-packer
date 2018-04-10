@@ -31,4 +31,4 @@ sudo emerge -v sys-process/cronie
 sudo rc-update add cronie default
 
 # some commandline helpers
-sudo emerge -v sys-fs/ncdu sys-process/htop app-portage/ufed app-misc/screen app-misc/mc
+sudo emerge -v sys-fs/ncdu sys-process/htop app-portage/ufed app-misc/screen app-misc/mc app-portage/eix
