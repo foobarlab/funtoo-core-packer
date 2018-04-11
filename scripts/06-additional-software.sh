@@ -17,5 +17,17 @@ sudo rc-update add cronie default
 sudo emerge -vt sys-fs/ncdu sys-process/htop app-misc/screen app-misc/mc net-analyzer/iptraf-ng \
 	            www-client/links net-ftp/ncftp app-shells/bash-completion
 
+# custom setting for app-misc/mc:
+cat <<'DATA' | sudo tee -a /root/.bashrc
+# restart mc with last used folder
+. /usr/libexec/mc/mc.sh
+
+DATA
+cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
+# restart mc with last used folder
+. /usr/libexec/mc/mc.sh
+
+DATA
+
 # gentoo/funtoo related helper tools
 sudo emerge -vt app-portage/ufed app-portage/eix
