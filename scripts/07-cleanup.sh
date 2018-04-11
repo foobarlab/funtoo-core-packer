@@ -11,9 +11,10 @@ source /etc/profile
 sudo emerge --depclean
 
 sudo etc-update --preen
-sudo rm -f /etc/._cfg0000_boot.conf		# prevent replacement of our boot.conf
-sudo find /etc/ -name '._cfg*'			# DEBUG: list all remaining config files needing an update
-sudo etc-update --automode -5			# force 'auto-merge' for remaining configs 
+sudo rm -f /etc/._cfg0000_boot.conf			# prevent replacement of our boot.conf
+sudo rm -f /etc/._cfg0000_genkernel.conf	# prevent replacement of our genkernel.conf
+sudo find /etc/ -name '._cfg*'				# DEBUG: list all remaining config files needing an update
+sudo etc-update --automode -5				# force 'auto-merge' for remaining configs 
 
 sudo boot-update
 
