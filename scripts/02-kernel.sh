@@ -10,6 +10,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
 # kernel related flags
 sys-kernel/genkernel -cryptsetup
 sys-kernel/debian-sources -binary
+sys-firmware/intel-microcode initramfs
 DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
