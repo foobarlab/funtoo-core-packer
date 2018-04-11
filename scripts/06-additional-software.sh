@@ -5,13 +5,19 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# FIXME: install vim and configure as default editor
+
 # logging facility
-sudo emerge -v app-admin/rsyslog
+sudo emerge -vt app-admin/rsyslog
 sudo rc-update add rsyslog default
 
 # cron service
-sudo emerge -v sys-process/cronie
+sudo emerge -vt sys-process/cronie
 sudo rc-update add cronie default
 
-# some commandline helpers
-sudo emerge -v sys-fs/ncdu sys-process/htop app-portage/ufed app-misc/screen app-misc/mc app-portage/eix
+# some commandline helpers/utils
+sudo emerge -vt sys-fs/ncdu sys-process/htop app-misc/screen app-misc/mc net-analyzer/iptraf-ng \
+	            www-client/links net-ftp/ncftp app-shells/bash-completion
+
+# gentoo/funtoo related helper tools
+sudo emerge -vt app-portage/ufed app-portage/eix
