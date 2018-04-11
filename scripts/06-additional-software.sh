@@ -5,8 +5,6 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# FIXME: install vim and configure as default editor
-
 # logging facility
 sudo emerge -vt app-admin/rsyslog
 sudo rc-update add rsyslog default
