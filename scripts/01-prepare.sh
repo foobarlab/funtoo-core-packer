@@ -14,7 +14,7 @@ DATA
 
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
-# add default package use flags for vbox here
+app-misc/mc -edit
 DATA
 
 sudo epro mix-ins +no-systemd
