@@ -27,6 +27,11 @@ SCRIPT
 $script_cleanup = <<SCRIPT
 # clean kernel sources after vbox-guest-additions install
 cd /usr/src/linux && sudo make distclean
+# TODO reset vagrant ssh authorized_key to default
+sudo wget https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub -O ~vagrant/.ssh/authorized_keys
+sudo chmod 0700 ~vagrant/.ssh
+sudo chmod 0600 ~vagrant/.ssh/authorized_keys
+sudo chown -R vagrant: ~vagrant/.ssh
 # stop rsyslog to allow zerofree to proceed
 sudo /etc/init.d/rsyslog stop
 # /boot (initially not mounted)
