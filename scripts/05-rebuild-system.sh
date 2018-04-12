@@ -10,8 +10,8 @@ if [ -z ${BUILD_GCC_VERSION:-} ]; then
 	exit 0
 fi
 
-# recompile kernel before anything else
 cd /usr/src/linux && sudo make distclean
+#sudo cp /usr/src/kernel.config /usr/src/linux/.config
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 sudo boot-update
 
