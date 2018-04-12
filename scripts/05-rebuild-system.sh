@@ -11,6 +11,7 @@ if [ -z ${BUILD_GCC_VERSION:-} ]; then
 fi
 
 # recompile kernel before anything else
+cd /usr/src/linux && sudo make distclean
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 sudo boot-update
 
