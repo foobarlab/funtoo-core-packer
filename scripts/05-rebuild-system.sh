@@ -10,15 +10,16 @@ if [ -z ${BUILD_GCC_VERSION:-} ]; then
 	exit 0
 fi
 
+# TODO test with excluded debian-sources
+
 cd /usr/src/linux && sudo make distclean
-#sudo cp /usr/src/kernel.config /usr/src/linux/.config
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 sudo boot-update
 
-sudo emerge --emptytree @system
+sudo emerge --emptytree @system --exclude debian-sources
 sudo etc-update --preen
 
-sudo emerge --emptytree @world
+sudo emerge --emptytree @world --exclude debian-sources
 sudo etc-update --preen
 
 sudo perl-cleaner --reallyall
