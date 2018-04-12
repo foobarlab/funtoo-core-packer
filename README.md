@@ -12,7 +12,7 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
  - NAT Networking using DHCP
  - Vagrant user *vagrant* with password *vagrant* (can get superuser via sudo without password), additionally using the default ssh authorized keys provided by Vagrant (see https://github.com/hashicorp/vagrant/tree/master/keys) 
  - Kernel: debian-sources 4.12.x, stripped down for use with Virtualbox
- - Optional: move from default GCC version to another version (GCC 6.4.0 tested)
+ - Optional: switch GCC version (6.4.0 tested, 5.4.0-r1 TBD)
  - List of additional installed software:
     - *virtualbox-guest-additions* (vboxguest and vboxsf modules, no vboxvideo)
     - kernel tools: *genkernel, eclean-kernel*
