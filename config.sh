@@ -1,11 +1,11 @@
 #!/bin/bash
 
 export BUILD_BOX_NAME="funtoo-core"
-export BUILD_BOX_VERSION="0.0.21"	# FIXME: put this into separate file to read from (see stage 3 build)
+export BUILD_BOX_VERSION="0.0.22"	# FIXME: put this into separate file to read from (see stage 3 build)
 
 export BUILD_PARENT_BOX_NAME="funtoo-stage3"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="foobarlab/funtoo-stage3"
-export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.04.07"
+export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.04.12"
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 export BUILD_GUEST_CPUS="4"
