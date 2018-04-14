@@ -10,9 +10,10 @@ if [ -z ${BUILD_GCC_VERSION:-} ]; then
 	exit 0
 fi
 
-cd /usr/src/linux && sudo make distclean
-sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
-sudo boot-update
+sudo eselect kernel list
+#cd /usr/src/linux && sudo make distclean
+#sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
+#sudo boot-update
 
 sudo emerge -vt --emptytree @system
 sudo etc-update --preen
@@ -21,3 +22,8 @@ sudo emerge -vt --emptytree @world
 sudo etc-update --preen
 
 sudo perl-cleaner --reallyall
+
+sudo eselect kernel list
+#cd /usr/src/linux && sudo make distclean
+#sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
+#sudo boot-update

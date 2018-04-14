@@ -62,3 +62,4 @@ Vagrant.configure("2") do |config|
   config.vm.provision "guest-additions", type: "shell", inline: $script_guest_additions
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup
 end
+
