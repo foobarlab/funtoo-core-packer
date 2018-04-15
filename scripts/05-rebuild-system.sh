@@ -5,10 +5,11 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-if [ -z ${BUILD_GCC_VERSION:-} ]; then
-	echo "BUILD_GCC_VERSION was not set. Skipping system rebuild ..."
-	exit 0
-fi
+# TEST in any case we rebuild our system
+#if [ -z ${BUILD_GCC_VERSION:-} ]; then
+#	echo "BUILD_GCC_VERSION was not set. Skipping system rebuild ..."
+#	exit 0
+#fi
 
 sudo eselect kernel list
 #cd /usr/src/linux && sudo make distclean
