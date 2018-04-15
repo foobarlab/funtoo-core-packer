@@ -15,7 +15,7 @@ for script in \
   01-prepare \
   02-kernel \
   03-system-update \
-  04-gcc-6 \
+  04-gcc-upgrade \
   05-rebuild-system \
   06-additional-software \
   07-cleanup	
