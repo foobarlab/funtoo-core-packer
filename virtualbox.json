@@ -1,0 +1,60 @@
+{
+  "builders": [{
+    "boot_wait": "10s",
+    "type": "virtualbox-ovf",
+    "vm_name": "{{user `vm_name`}}",
+    "source_path": "{{user `source_path`}}",
+    "guest_additions_mode": "upload",
+    "guest_additions_path": "VBoxGuestAdditions.iso",
+    "headless": "{{user `headless`}}",
+    "ssh_username": "{{user `username`}}",
+    "ssh_password": "{{user `password`}}",
+    "ssh_wait_timeout": "30s",
+    "ssh_private_key_file": "keys/vagrant",
+    "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+    "vboxmanage":[
+        ["modifyvm","{{.Name}}","--memory","{{user `memory`}}"],
+        ["modifyvm","{{.Name}}","--cpus","{{user `cpus`}}"],
+        ["modifyvm","{{.Name}}","--audio","none"],
+        ["modifyvm","{{.Name}}","--usb","off"],
+        ["modifyvm","{{.Name}}","--chipset","ich9"],
+        ["modifyvm","{{.Name}}","--rtcuseutc","on"],
+        ["modifyvm","{{.Name}}","--vram", "12"]
+      ]
+  }],
+  "provisioners": [{
+      "destination": "/tmp",
+      "source": "scripts",
+      "type": "file"
+  },
+  {
+      "type": "shell",
+      "script": "provision.sh",
+      "environment_vars": [
+          "SCRIPTS=/tmp",
+          "MAKEOPTS=-j{{user `cpus`}}",
+          "BUILD_RUN=true",
+          "BUILD_GCC_VERSION={{user `gcc_version`}}"
+      ],
+      "expect_disconnect": false
+  }],
+  "description": "{{user `box_description`}}",
+  "post-processors": [{
+    "type": "vagrant",
+    "keep_input_artifact": false,
+    "output": "{{user `output_file`}}"
+  }],
+  "variables": {
+    "source_path": "{{env `BUILD_PARENT_OVF`}}",
+    "output_file": "{{env `BUILD_OUTPUT_FILE_TEMP`}}",
+    "box_description": "{{env `BUILD_BOX_DESCRIPTION`}}",
+    "guest_os_type": "{{env `BUILD_GUEST_TYPE`}}",
+    "vm_name": "{{env `BUILD_BOX_NAME`}}",
+    "memory": "{{env `BUILD_GUEST_MEMORY`}}",
+    "cpus": "{{env `BUILD_GUEST_CPUS`}}",
+    "gcc_version": "{{env `BUILD_GCC_VERSION`}}",
+    "headless": "true",
+    "username": "vagrant",
+    "password": "vagrant"
+  }
+}

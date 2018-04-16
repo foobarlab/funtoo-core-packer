@@ -4,3 +4,4 @@ packer_cache/
 .project
 packer.log
 /keys
+vagrant-cloud-*
