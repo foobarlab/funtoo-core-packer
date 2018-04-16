@@ -19,9 +19,7 @@ export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME.tmp.box"
 
 export BUILD_BOX_DESCRIPTION="$BUILD_BOX_NAME build @$(date --iso-8601=seconds)"
 
-# specify which gcc version to install or leave empty to keep the default
-export BUILD_GCC_VERSION="6.4.0"
-#export BUILD_GCC_VERSION=""
+export BUILD_GCC_VERSION="6.4.0"	# specify which gcc version to install or leave empty to keep the default
 
 if [ $# -eq 0 ]; then
 	echo "Executing $0 ..."

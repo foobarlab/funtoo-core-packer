@@ -7,7 +7,7 @@ fi
 
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
-# kernel related flags
+# kernel related USE flags
 sys-kernel/genkernel -cryptsetup
 sys-kernel/debian-sources -binary
 sys-firmware/intel-microcode initramfs

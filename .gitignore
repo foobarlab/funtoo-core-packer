@@ -5,3 +5,4 @@ packer_cache/
 packer.log
 /keys
 vagrant-cloud-*
+output-virtualbox-ovf/
