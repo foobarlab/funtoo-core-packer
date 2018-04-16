@@ -22,6 +22,4 @@ echo "Cleanup old logs ..."
 rm -f packer.log || true
 echo "Cleanup broken wget downloads ..."
 rm -f download || true
-#echo "Cleanup sensitive information ..."
-#rm -f ./vagrant-cloud-* || true
 echo "All done. You may now run './build.sh' to build a new box."
