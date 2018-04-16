@@ -30,7 +30,7 @@ SAVE_CONFIG="yes"
 USECOLOR="yes"
 CLEAR_CACHE_DIR="yes"
 POSTCLEAR="1"
-#MAKEOPTS="" 
+#MAKEOPTS=""	# determined automatically
 LVM="no"
 LUKS="no"
 GPG="no"
@@ -43,7 +43,7 @@ ISCSI="no"
 UNIONFS="no"
 BTRFS="no"
 FIRMWARE="no"
-#FIRMWARE_SRC="/lib/firmware"
+FIRMWARE_SRC="/lib/firmware"
 DISKLABEL="yes"
 BOOTLOADER=""	# grub not needed, we will use boot-update
 TMPDIR="/var/tmp/genkernel"
@@ -57,7 +57,7 @@ DEFAULT_KERNEL_SOURCE="/usr/src/linux"
 DEFAULT_KERNEL_CONFIG="/usr/src/kernel.config"
 KNAME="genkernel"
 REAL_ROOT="/dev/sda4"
-CMD_CALLBACK=""	# to auto compile modules after kernel use: "emerge --quiet @module-rebuild"
+CMD_CALLBACK="emerge --quiet @module-rebuild"	# to auto compile 3rd party modules set to "emerge --quiet @module-rebuild"
 DATA
 
 sudo env-update
