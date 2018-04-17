@@ -12,17 +12,12 @@ USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
 DATA
 
-sudo mkdir -p /etc/portage/package.use
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
-app-misc/mc -edit
-DATA
-
 sudo epro mix-ins +no-systemd
 
 # FIXME replace /etc/motd - use a template ...
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
-Funtoo GNU/Linux (core) - Vagrant box v0.1.1 - build by Foobarlab
+Funtoo GNU/Linux (core) - Vagrant box v0.1.2 - build by Foobarlab
 DATA
 
 sudo locale-gen
