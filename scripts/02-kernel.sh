@@ -7,7 +7,6 @@ fi
 
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
-# kernel related USE flags
 sys-kernel/genkernel -cryptsetup
 sys-kernel/debian-sources -binary
 sys-firmware/intel-microcode initramfs
@@ -30,7 +29,7 @@ SAVE_CONFIG="yes"
 USECOLOR="yes"
 CLEAR_CACHE_DIR="yes"
 POSTCLEAR="1"
-#MAKEOPTS=""	# determined automatically
+#MAKEOPTS=""	# determined by Vagrantfile
 LVM="no"
 LUKS="no"
 GPG="no"
@@ -57,7 +56,7 @@ DEFAULT_KERNEL_SOURCE="/usr/src/linux"
 DEFAULT_KERNEL_CONFIG="/usr/src/kernel.config"
 KNAME="genkernel"
 REAL_ROOT="/dev/sda4"
-CMD_CALLBACK="emerge --quiet @module-rebuild"	# to auto compile 3rd party modules set to "emerge --quiet @module-rebuild"
+CMD_CALLBACK="emerge --quiet @module-rebuild"
 DATA
 
 sudo env-update
