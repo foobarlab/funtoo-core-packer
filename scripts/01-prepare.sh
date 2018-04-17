@@ -14,11 +14,12 @@ DATA
 
 sudo epro mix-ins +no-systemd
 
-# FIXME replace /etc/motd - use a template ...
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
-Funtoo GNU/Linux (core) - Vagrant box v0.1.2 - build by Foobarlab
+Funtoo GNU/Linux (core) - Vagrant box BUILD_BOX_VERSION - build by Foobarlab
 DATA
+sudo sed -i 's/BUILD_BOX_VERSION/'"$BUILD_BOX_VERSION"'/g' /etc/motd
+sudo cat /etc/motd
 
 sudo locale-gen
 sudo eselect locale set en_US.UTF-8
