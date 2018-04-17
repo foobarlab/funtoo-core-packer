@@ -27,8 +27,7 @@ SCRIPT
 $script_cleanup = <<SCRIPT
 # clean kernel sources after vbox-guest-additions install
 cd /usr/src/linux && sudo make distclean
-# stop rsyslog to allow zerofree to proceed
-sudo /etc/init.d/rsyslog stop
+# run zerofree at last to squeeze the last bit
 # /boot (initially not mounted)
 sudo mount -o ro /dev/sda1
 sudo zerofree /dev/sda1
@@ -56,8 +55,6 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--vram", "12"]
   end
   config.ssh.insert_key = false
-  #config.ssh.username = 'vagrant'
-  #config.ssh.password = 'vagrant'
   config.vm.synced_folder '.', '/vagrant', disabled: true
   config.vm.provision "guest-additions", type: "shell", inline: $script_guest_additions
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup

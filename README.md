@@ -16,9 +16,6 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
  - List of additional installed software:
     - *virtualbox-guest-additions* (vboxguest and vboxsf modules, no vboxvideo)
     - kernel tools: *genkernel, eclean-kernel*
-    - services: *rsyslog, cronie*
-    - commandline tools: *htop, ncdu, ufed, screen, mc, iptraf-ng, links, ncftp, apg, bash-completion*
-    - *vim* as default editor
     - any additional software installed in the [stage3 box](https://github.com/foobarlab/funtoo-stage3-packer)
 
 ### Download pre-build images

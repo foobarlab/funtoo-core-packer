@@ -28,7 +28,6 @@ sudo gcc-config "x86_64-pc-linux-gnu-${BUILD_GCC_VERSION}"
 sudo emerge -v --oneshot sys-devel/libtool
 sudo emerge -vt --depclean sys-devel/gcc
 
-# DEBUG:
 sudo gcc-config --list-profiles
 
 sudo env-update
