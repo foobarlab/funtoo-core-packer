@@ -54,3 +54,6 @@ cat <<'DATA' | sudo tee -a ~vagrant/.vimrc
 setlocal nolist noai
 
 DATA
+
+# install ansible for automation
+sudo emerge -vt app-admin/ansible
