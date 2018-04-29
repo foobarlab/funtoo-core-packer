@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export BUILD_BOX_NAME="funtoo-core"
-export BUILD_BOX_VERSION="0.1.7"
+export BUILD_BOX_VERSION="0.1.8"
 
 export BUILD_PARENT_BOX_NAME="funtoo-stage3"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="foobarlab/funtoo-stage3"
