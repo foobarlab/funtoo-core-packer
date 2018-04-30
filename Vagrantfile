@@ -54,6 +54,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--chipset", "ich9"]
     vb.customize ["modifyvm", :id, "--vram", "12"]
   end
+  config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: true
   config.vm.provision "guest-additions", type: "shell", inline: $script_guest_additions
