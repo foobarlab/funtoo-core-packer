@@ -7,6 +7,7 @@
     "guest_additions_mode": "upload",
     "guest_additions_path": "VBoxGuestAdditions.iso",
     "headless": "{{user `headless`}}",
+    "ssh_pty": "true",
     "ssh_username": "{{user `username`}}",
     "ssh_password": "{{user `password`}}",
     "ssh_wait_timeout": "30s",
