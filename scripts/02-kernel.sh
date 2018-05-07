@@ -63,7 +63,9 @@ sudo env-update
 source /etc/profile
 
 sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
-sudo emerge -uvt sys-kernel/debian-sources
+
+sudo emerge -vt --unmerge sys-kernel/debian-sources
+sudo emerge -vt sys-kernel/debian-sources
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
