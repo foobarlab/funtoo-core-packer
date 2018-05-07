@@ -11,4 +11,6 @@ sudo etc-update --preen
 sudo emerge -vt --emptytree @world
 sudo etc-update --preen
 
+sudo emerge -vt @preserved-rebuild
+
 sudo perl-cleaner --reallyall

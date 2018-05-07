@@ -9,5 +9,7 @@ sudo emerge -vtuDN --with-bdeps=y @world
 
 sudo etc-update --preen
 
+sudo emerge -vt @preserved-rebuild
+
 sudo env-update
 source /etc/profile
