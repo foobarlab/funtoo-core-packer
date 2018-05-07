@@ -5,6 +5,16 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+if [ -z ${BUILD_REBUILD_SYSTEM:-} ]; then
+	echo "BUILD_REBUILD_SYSTEM was not set. Skipping ..."
+	exit 0
+else
+	if [ "$BUILD_REBUILD_SYSTEM" = false ]; then
+		echo "BUILD_REBUILD_SYSTEM set to FALSE. Skipping ..."
+		exit 0
+	fi	
+fi
+
 sudo emerge -vt --emptytree @system
 sudo etc-update --preen
 
