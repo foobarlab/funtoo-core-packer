@@ -64,6 +64,17 @@ source /etc/profile
 
 sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
+sudo emerge -vt --unmerge sys-kernel/debian-sources
+
+# TODO: remove sources completely
+sudo rm -rf /usr/src/linux-debian-sources-*
+
+sudo emerge -vt sys-kernel/debian-sources
+
+# TODO: distclean sources
+cd /usr/src/linux
+sudo make distclean
+
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
 sudo emerge -vt app-admin/eclean-kernel
