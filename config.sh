@@ -1,11 +1,11 @@
 #!/bin/bash
 
 export BUILD_BOX_NAME="funtoo-core"
-export BUILD_BOX_VERSION="0.1.13"
+export BUILD_BOX_VERSION="0.1.15"
 
 export BUILD_PARENT_BOX_NAME="funtoo-stage3"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="foobarlab/funtoo-stage3"
-export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.05.15"
+export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.06.02"
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 export BUILD_GUEST_CPUS="4"
