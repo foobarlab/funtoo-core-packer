@@ -6,7 +6,6 @@ export BUILD_BOX_NAME="funtoo-core"
 
 export BUILD_PARENT_BOX_NAME="funtoo-stage3"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="foobarlab/funtoo-stage3"
-export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION="2018.06.16"	# FIXME read this from vagrant cloud
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 export BUILD_GUEST_CPUS="4"
@@ -23,6 +22,9 @@ export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br>$BUILD_BOX_NAME build 
 
 export BUILD_GCC_VERSION=""				# specify which gcc version to install or leave empty to keep the default
 export BUILD_REBUILD_SYSTEM=false		# set to true when gcc version is not default 
+
+# get the latest parent version from vagrant cloud api call:
+. parent_version.sh
 
 if [ $# -eq 0 ]; then
 	echo "Executing $0 ..."

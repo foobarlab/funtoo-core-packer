@@ -12,15 +12,15 @@ BUILD_PARENT_BOX_OVF="$HOME/.vagrant.d/boxes/$BUILD_PARENT_BOX_NAME/0/virtualbox
 BUILD_PARENT_BOX_VAGRANTCLOUD_PATHNAME=`echo "$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME" | sed "s|/|-VAGRANTSLASH-|"`
 BUILD_PARENT_BOX_VAGRANTCLOUD_OVF="$HOME/.vagrant.d/boxes/$BUILD_PARENT_BOX_VAGRANTCLOUD_PATHNAME/$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION/virtualbox/box.ovf"
 
-if [ -f $BUILD_PARENT_BOX_OVF ]
+if [ -f $BUILD_PARENT_BOX_OVF ];
 then
 	export BUILD_PARENT_OVF=$BUILD_PARENT_BOX_OVF
 	echo "An existing local '$BUILD_PARENT_BOX_NAME' box was detected. Skipping download ..."
 else
 	export BUILD_PARENT_OVF=$BUILD_PARENT_BOX_VAGRANTCLOUD_OVF
-	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ]
+	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ];
 	then
-		echo "An existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box download with version $BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION was detected."
+		echo "An existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box download with version '$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION' was detected."
 		read -p "Do you want to delete it and download again (y/N)? " choice
 		case "$choice" in 
 		  y|Y ) echo "Deleteing existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box ..."
@@ -30,16 +30,16 @@ else
 		esac
 	fi
 	
-	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ]
+	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ];
 	then
 		echo "'$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box already present, no need for download."
 	else
-		echo "Downloading '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box with version $BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION ..."
+		echo "Downloading '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box with version '$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION' ..."
 		vagrant box add -f $BUILD_PARENT_BOX_VAGRANTCLOUD_NAME --box-version $BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION --provider virtualbox
 	fi
 fi
 
-if [ -d "keys" ]
+if [ -d "keys" ];
 then
 	echo "Ok, key dir exists."
 else
@@ -47,7 +47,7 @@ else
 	mkdir -p keys
 fi
 
-if [ -f "keys/vagrant" ]
+if [ -f "keys/vagrant" ];
 then
 	echo "Ok, private key exists."
 else
@@ -59,7 +59,7 @@ else
     fi
 fi
 
-if [ -f "keys/vagrant.pub" ]
+if [ -f "keys/vagrant.pub" ];
 then
 	echo "Ok, public key exists."
 else
@@ -81,7 +81,7 @@ packer build virtualbox.json
 
 echo "Optimizing box size ..."
 
-if [ -f "$BUILD_OUTPUT_FILE_TEMP" ]
+if [ -f "$BUILD_OUTPUT_FILE_TEMP" ];
 then
     echo "Suspending any running instances ..."
     vagrant suspend
