@@ -20,7 +20,7 @@ if [ -z ${BUILD_SKIP_PARENT_BOX_CHECK:-} ]; then
 	PARENT_VERSION_HTTP_CODE=$( \
 	curl -sS -w "%{http_code}" -o /dev/null \
 	  --header "Authorization: Bearer $VAGRANT_CLOUD_TOKEN" \
-	  https://app.vagrantup.com/api/v1/box/$BUILD_BOX_USERNAME/$BUILD_PARENT_BOX_NAME \
+	  https://app.vagrantup.com/api/v1/box/$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME \
 	)
 	
 	case "$PARENT_VERSION_HTTP_CODE" in
@@ -34,7 +34,7 @@ if [ -z ${BUILD_SKIP_PARENT_BOX_CHECK:-} ]; then
 	LATEST_PARENT_VERSION=$( \
 	curl -sS \
 	  --header "Authorization: Bearer $VAGRANT_CLOUD_TOKEN" \
-	  https://app.vagrantup.com/api/v1/box/$BUILD_BOX_USERNAME/$BUILD_PARENT_BOX_NAME \
+	  https://app.vagrantup.com/api/v1/box/$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME \
 	)
 	
 	export BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION=$(echo $LATEST_PARENT_VERSION | jq .current_version.version | tr -d '"')
