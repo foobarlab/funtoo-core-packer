@@ -12,14 +12,12 @@ BUILD_PARENT_BOX_OVF="$HOME/.vagrant.d/boxes/$BUILD_PARENT_BOX_NAME/0/virtualbox
 BUILD_PARENT_BOX_VAGRANTCLOUD_PATHNAME=`echo "$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME" | sed "s|/|-VAGRANTSLASH-|"`
 BUILD_PARENT_BOX_VAGRANTCLOUD_OVF="$HOME/.vagrant.d/boxes/$BUILD_PARENT_BOX_VAGRANTCLOUD_PATHNAME/$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION/virtualbox/box.ovf"
 
-if [ -f $BUILD_PARENT_BOX_OVF ];
-then
+if [ -f $BUILD_PARENT_BOX_OVF ]; then
 	export BUILD_PARENT_OVF=$BUILD_PARENT_BOX_OVF
 	echo "An existing local '$BUILD_PARENT_BOX_NAME' box was detected. Skipping download ..."
 else
 	export BUILD_PARENT_OVF=$BUILD_PARENT_BOX_VAGRANTCLOUD_OVF
-	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ];
-	then
+	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ]; then
 		echo "An existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box download with version '$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION' was detected."
 		read -p "Do you want to delete it and download again (y/N)? " choice
 		case "$choice" in 
@@ -30,8 +28,7 @@ else
 		esac
 	fi
 	
-	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ];
-	then
+	if [ -f $BUILD_PARENT_BOX_VAGRANTCLOUD_OVF ]; then
 		echo "'$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box already present, no need for download."
 	else
 		echo "Downloading '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box with version '$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION' ..."
@@ -39,16 +36,14 @@ else
 	fi
 fi
 
-if [ -d "keys" ];
-then
+if [ -d "keys" ]; then
 	echo "Ok, key dir exists."
 else
 	echo "Creating key dir ..."
 	mkdir -p keys
 fi
 
-if [ -f "keys/vagrant" ];
-then
+if [ -f "keys/vagrant" ]; then
 	echo "Ok, private key exists."
 else
 	echo "Downloading default private key ..."
@@ -59,8 +54,7 @@ else
     fi
 fi
 
-if [ -f "keys/vagrant.pub" ];
-then
+if [ -f "keys/vagrant.pub" ]; then
 	echo "Ok, public key exists."
 else
 	echo "Downloading default public key ..."
@@ -81,8 +75,7 @@ packer build virtualbox.json
 
 echo "Optimizing box size ..."
 
-if [ -f "$BUILD_OUTPUT_FILE_TEMP" ];
-then
+if [ -f "$BUILD_OUTPUT_FILE_TEMP" ]; then
     echo "Suspending any running instances ..."
     vagrant suspend
     echo "Destroying current box ..."

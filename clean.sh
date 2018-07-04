@@ -26,4 +26,4 @@ echo "Cleanup old logs ..."
 rm -f packer.log || true
 echo "Cleanup broken wget downloads ..."
 rm -f download || true
-echo "All done. You may now run './build.sh' to build a new box."
+echo "All done. You may now run './build.sh' to build a fresh box."
