@@ -6,3 +6,4 @@ packer.log
 /keys
 vagrant-cloud-*
 output-virtualbox-ovf/
+build_version

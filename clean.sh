@@ -2,6 +2,8 @@
 
 command -v vagrant >/dev/null 2>&1 || { echo "Command 'vagrant' required but it's not installed.  Aborting." >&2; exit 1; }
 
+export BUILD_SKIP_PARENT_BOX_CHECK=true
+
 . config.sh
 
 echo "Suspending any running instances ..."
@@ -16,10 +18,12 @@ echo "Cleaning packer_cache ..."
 rm -rf packer_cache/ || true
 echo "Cleaning packer output-virtualbox-ovf dir ..."
 rm -rf output-virtualbox-ovf || true
+echo "Drop build version ..."
+rm -f build_version || true
 echo "Deleting any box file ..."
 rm -f *.box || true
 echo "Cleanup old logs ..."
 rm -f packer.log || true
 echo "Cleanup broken wget downloads ..."
 rm -f download || true
-echo "All done. You may now run './build.sh' to build a new box."
+echo "All done. You may now run './build.sh' to build a fresh box."
