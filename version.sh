@@ -7,6 +7,6 @@ export BUILD_VERSION=$(<version)
 if [ -f build_version ]; then
 	export BUILD_BOX_VERSION=$(<build_version)
 else
-	export BUILD_BOX_VERSION=$BUILD_VERSION.$(date -u +%Y%m%d%H%M)
+	export BUILD_BOX_VERSION=$BUILD_VERSION.$(date -u +%Y%m%d)
 	echo $BUILD_BOX_VERSION > build_version
 fi
