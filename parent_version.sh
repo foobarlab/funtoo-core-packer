@@ -8,7 +8,11 @@ if [ -z ${BUILD_BOX_NAME:-} ]; then
 	exit 1
 fi
 
-if [ -z ${BUILD_SKIP_PARENT_BOX_CHECK:-} ]; then
+if [ -z ${BUILD_PARENT_BOX_CHECK:-} ]; then
+
+	echo "Skipping parent box check ..."
+
+else
 
 	command -v curl >/dev/null 2>&1 || { echo "Command 'curl' required but it's not installed.  Aborting." >&2; exit 1; }
 	command -v jq >/dev/null 2>&1 || { echo "Command 'jq' required but it's not installed.  Aborting." >&2; exit 1; }
@@ -41,6 +45,4 @@ if [ -z ${BUILD_SKIP_PARENT_BOX_CHECK:-} ]; then
 	
 	echo "Found latest parent version: $BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION"
 
-else
-	echo "Skipping parent box check ..."
 fi

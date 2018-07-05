@@ -2,6 +2,8 @@
 
 echo "Executing $0 ..."
 
+export BUILD_PARENT_BOX_CHECK=true
+
 . config.sh quiet
 
 command -v vagrant >/dev/null 2>&1 || { echo "Command 'vagrant' required but it's not installed.  Aborting." >&2; exit 1; }
