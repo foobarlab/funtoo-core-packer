@@ -22,12 +22,13 @@ export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 export BUILD_BOX_RELEASE_NOTES="GCC 5.4.0-r1, VirtualBox Guest Additions 5.2.14"	# edit this to reflect actual setup
 
 BUILD_BOX_DESCRIPTION="$BUILD_BOX_NAME version $BUILD_BOX_VERSION"
-if [ -z ${BUILD_NUMBER+x} ] || [ -z ${BUILD_TAG+x} ]; then
-	# without build number 
-	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION custom build"
+if [ -z ${BUILD_TAG+x} ]; then
+	# without build tag
+	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION (custom)"
 else
-	# for jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
-	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION build $BUILD_NUMBER ($BUILD_TAG)"
+	# with env var BUILD_TAG set
+	# NOTE: for jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
+	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION ($BUILD_TAG)"
 fi
 export BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br>$BUILD_BOX_RELEASE_NOTES"
 
