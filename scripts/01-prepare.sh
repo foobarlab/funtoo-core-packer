@@ -5,8 +5,6 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-sudo ego sync
-
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
@@ -21,13 +19,16 @@ DATA
 
 sudo mkdir -p /etc/portage/package.accept_keywords
 cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
-<=sys-kernel/debian-sources-4.16.0
+<=sys-kernel/debian-sources-4.16.0 **
 DATA
 
+# TODO: might not be needed as accept_keywords is set:
 sudo mkdir -p /etc/portage/package.unmask
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-kernel
 <=sys-kernel/debian-sources-4.16.0
 DATA
+
+sudo ego sync
 
 sudo epro mix-ins +no-systemd
 
