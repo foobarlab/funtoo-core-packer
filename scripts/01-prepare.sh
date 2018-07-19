@@ -22,12 +22,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
 <=sys-kernel/debian-sources-4.16.0 **
 DATA
 
-# TODO: might not be needed as accept_keywords is set:
-sudo mkdir -p /etc/portage/package.unmask
-cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-kernel
-<=sys-kernel/debian-sources-4.16.0
-DATA
-
 sudo ego sync
 
 sudo epro mix-ins +no-systemd
