@@ -12,11 +12,9 @@ sys-kernel/debian-sources -binary
 sys-firmware/intel-microcode initramfs
 DATA
 
-sudo mkdir -p /etc/portage/package.unmask
-cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-kernel
->=sys-kernel/debian-sources-4.15.17
-#=sys-kernel/debian-sources-4.15.17-r1
-#=sys-kernel/debian-sources-4.16.12
+sudo mkdir -p /etc/portage/package.accept_keywords
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
+<=sys-kernel/debian-sources-4.16.0
 DATA
 
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
