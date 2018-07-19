@@ -12,6 +12,18 @@ USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
 DATA
 
+sudo mkdir -p /etc/portage/package.use
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
+sys-kernel/genkernel -cryptsetup
+sys-kernel/debian-sources -binary
+sys-firmware/intel-microcode initramfs
+DATA
+
+sudo mkdir -p /etc/portage/package.accept_keywords
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
+<=sys-kernel/debian-sources-4.16.0
+DATA
+
 sudo epro mix-ins +no-systemd
 
 sudo rm -f /etc/motd

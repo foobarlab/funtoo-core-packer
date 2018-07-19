@@ -5,18 +5,6 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-sudo mkdir -p /etc/portage/package.use
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
-sys-kernel/genkernel -cryptsetup
-sys-kernel/debian-sources -binary
-sys-firmware/intel-microcode initramfs
-DATA
-
-sudo mkdir -p /etc/portage/package.accept_keywords
-cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
-<=sys-kernel/debian-sources-4.16.0
-DATA
-
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 
 sudo emerge -vt sys-kernel/genkernel
