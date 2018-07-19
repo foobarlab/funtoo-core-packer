@@ -14,7 +14,8 @@ DATA
 
 sudo mkdir -p /etc/portage/package.unmask
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-kernel
-=sys-kernel/debian-sources-4.15.17-r1
+>=sys-kernel/debian-sources-4.15.17
+#=sys-kernel/debian-sources-4.15.17-r1
 #=sys-kernel/debian-sources-4.16.12
 DATA
 
