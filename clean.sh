@@ -23,7 +23,7 @@ rm -f build_version || true
 echo "Deleting any box file ..."
 rm -f *.box || true
 echo "Cleanup old logs ..."
-rm -f packer.log || true
+rm -f *.log || true
 echo "Cleanup broken wget downloads ..."
 rm -f download || true
 echo "All done. You may now run './build.sh' to build a fresh box."
