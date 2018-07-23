@@ -63,6 +63,8 @@ sudo rm -rf /usr/src/linux-debian-sources-*
 
 sudo emerge -vt sys-kernel/debian-sources
 
+sudo eselect kernel list
+
 cd /usr/src/linux
 sudo make distclean
 
