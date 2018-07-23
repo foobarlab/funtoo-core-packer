@@ -3,6 +3,18 @@
 
 . config.sh
 
+if [ -f "$BUILD_OUTPUT_FILE" ];
+then
+	echo "Found box file '$BUILD_OUTPUT_FILE' in the current directory ..."
+else
+	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory. Please run './build.sh' before to build the box."
+	if [ $# -eq 0 ]; then
+		exit 1	# exit with error when running without param
+	else
+		exit 0	# silently exit when running with param
+	fi 
+fi
+
 command -v curl >/dev/null 2>&1 || { echo "Command 'curl' required but it's not installed.  Aborting." >&2; exit 1; }
 command -v jq >/dev/null 2>&1 || { echo "Command 'jq' required but it's not installed.  Aborting." >&2; exit 1; }
 
@@ -29,16 +41,16 @@ esac
 
 . vagrant_cloud_token.sh
 
-# FIXME check if a box with same name/version/provider already exists, revoke version, delete on user request, otherwise continue ...
-
 # check version match on cloud and abort if same
 echo "Checking existing cloud version ..."
-# FIXME check if box already exists (should give us a 200 HTTP response, if not we will get a 404)
 LATEST_CLOUD_VERSION=$( \
 curl -sS \
   --header "Authorization: Bearer $VAGRANT_CLOUD_TOKEN" \
   https://app.vagrantup.com/api/v1/box/$BUILD_BOX_USERNAME/$BUILD_BOX_NAME \
 )
+
+# FIXME handle curl exit code, check if box exists (should give us a 200 HTTP response, if not we will get a 404)
+#echo "curl exit code: $?"
 
 LATEST_CLOUD_VERSION=$(echo $LATEST_CLOUD_VERSION | jq .current_version.version | tr -d '"')
 echo "Our version: $BUILD_BOX_VERSION"
