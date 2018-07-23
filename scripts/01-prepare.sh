@@ -19,7 +19,7 @@ DATA
 
 sudo mkdir -p /etc/portage/package.accept_keywords
 cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
-<=sys-kernel/debian-sources-4.16.0 **
+>=sys-kernel/debian-sources-4.15.0 **
 DATA
 
 sudo ego sync

@@ -55,6 +55,10 @@ DATA
 sudo env-update
 source /etc/profile
 
+# DEBUG:
+sudo eselect kernel list
+sudo ls -la /lib/modules/
+
 sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
 sudo emerge -vt --unmerge sys-kernel/debian-sources
@@ -63,7 +67,9 @@ sudo rm -rf /usr/src/linux-debian-sources-*
 
 sudo emerge -vt sys-kernel/debian-sources
 
+# DEBUG:
 sudo eselect kernel list
+sudo ls -la /lib/modules/
 
 cd /usr/src/linux
 sudo make distclean
