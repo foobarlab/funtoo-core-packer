@@ -35,6 +35,8 @@ export BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAM
 export BUILD_GCC_VERSION=""				# specify which gcc version to install or leave empty to keep the default
 export BUILD_REBUILD_SYSTEM=false		# set to true when gcc version is not default 
 
+export BUILD_KEEP_MAX_CLOUD_BOXES=3		# set the maximum number of boxes to keep in Vagrant Cloud
+
 # get the latest parent version from vagrant cloud api call:
 . parent_version.sh
 
