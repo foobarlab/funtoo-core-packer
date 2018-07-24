@@ -71,7 +71,11 @@ sudo eselect kernel set 1
 cd /usr/src/linux
 sudo make distclean
 
-# FIXME do 'make olddefconfig' on 'kernel.config' in case kernel config is outdated
+# apply 'make olddefconfig' on 'kernel.config' in case kernel config is outdated
+sudo cp /usr/src/kernel.config /usr/src/kernel.config.old
+sudo mv -f /usr/src/kernel.config /usr/src/linux/.config
+sudo make olddefconfig
+sudo mv -f /usr/src/linux/.config /usr/src/kernel.config
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
