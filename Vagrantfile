@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-system("./config.sh")
+system("./config.sh >/dev/null")
 
 $script_guest_additions = <<SCRIPT
 # prepare kernel
