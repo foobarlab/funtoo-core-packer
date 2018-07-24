@@ -1,13 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-system("./config.sh >/dev/null")
+system("./config.sh")
 
 $script_guest_additions = <<SCRIPT
 # prepare kernel
 sudo cp /usr/src/kernel.config /usr/src/linux/.config
 cd /usr/src/linux
-sudo make oldconfig
+sudo make olddefconfig
 sudo make modules_prepare
 # copy iso and start install
 sudo mkdir -p /mnt/temp
