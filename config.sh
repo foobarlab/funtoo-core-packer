@@ -19,7 +19,7 @@ export BUILD_BOX_PROVIDER="virtualbox"
 
 export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 
-export BUILD_BOX_RELEASE_NOTES="GCC 5.4.0-r1, VirtualBox Guest Additions 5.2.14"	# edit this to reflect actual setup
+export BUILD_BOX_RELEASE_NOTES="GCC 7.3.1, VirtualBox Guest Additions 5.2.16"	# edit this to reflect actual setup
 
 BUILD_BOX_DESCRIPTION="$BUILD_BOX_NAME version $BUILD_BOX_VERSION"
 if [ -z ${BUILD_TAG+x} ]; then
