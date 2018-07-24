@@ -10,8 +10,6 @@ echo "Destroying current box ..."
 vagrant destroy -f || true
 echo "Removing box '$BUILD_BOX_NAME' ..."
 vagrant box remove -f "$BUILD_BOX_NAME" 2>/dev/null || true
-echo "Force remove of appliance from Virtualbox folder ..."
-rm -rf ~/.VirtualBox/Machines/$BUILD_BOX_NAME/
 echo "Cleaning .vagrant dir ..."
 rm -rf .vagrant/ || true
 echo "Cleaning packer_cache ..."
