@@ -11,8 +11,8 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
  - Timezone: ```UTC```
  - NAT Networking using DHCP
  - Vagrant user *vagrant* with password *vagrant* (can get superuser via sudo without password), additionally using the default ssh authorized keys provided by Vagrant (see https://github.com/hashicorp/vagrant/tree/master/keys) 
- - Kernel: debian-sources 4.12.x, stripped down for use with Virtualbox
- - Optional: switch GCC version (6.4.0 tested)
+ - Kernel: debian-sources 4.16.x, stripped down for use with Virtualbox
+ - Optional: switch and rebuild GCC version (experimental, untested)
  - List of additional installed software:
     - *virtualbox-guest-additions* (vboxguest and vboxsf modules, no vboxvideo)
     - kernel tools: *genkernel, eclean-kernel*
@@ -49,6 +49,24 @@ Get the latest build from Vagrant Cloud: [foobarlab/funtoo-core](https://app.vag
 #### Power on the box (keeping previous state) 
 
  - Run ```./startup.sh```
+
+### Special use cases
+
+#### Show current build config
+
+ - Run ```./config.sh```
+
+#### Cleanup build environment (poweroff all Vagrant and Virtualbox machines)
+
+ - Run ```./clean_env.sh```
+
+#### Generate Vagrant Cloud API Token
+
+ - Run ```./vagrant_cloud_token.sh```
+
+#### Keep only a maximum number of boxes in Vagrant Cloud (experimental)
+
+ - Run ```./clean_cloud.sh```
 
 ## Feedback welcome
 
