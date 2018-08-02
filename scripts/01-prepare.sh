@@ -5,6 +5,9 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.funtoo_core
+sed -i 's/<br>/\n/g' /home/vagrant/.funtoo_core
+
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
