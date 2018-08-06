@@ -20,6 +20,11 @@ sys-kernel/debian-sources -binary
 sys-firmware/intel-microcode initramfs
 DATA
 
+sudo mkdir -p /etc/portage/package.accept_keywords
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
+>=sys-kernel/debian-sources-4.17 **
+DATA
+
 sudo ego sync
 
 sudo epro mix-ins +no-systemd
