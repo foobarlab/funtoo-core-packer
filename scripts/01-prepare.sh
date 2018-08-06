@@ -5,8 +5,8 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.funtoo_core
-sed -i 's/<br>/\n/g' /home/vagrant/.funtoo_core
+echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.$BUILD_BOX_NAME
+sed -i 's/<br>/\n/g' /home/vagrant/.$BUILD_BOX_NAME
 
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
@@ -22,7 +22,7 @@ DATA
 
 sudo mkdir -p /etc/portage/package.accept_keywords
 cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
->=sys-kernel/debian-sources-4.16.12 **
+>=sys-kernel/debian-sources-4.17 **
 DATA
 
 sudo ego sync
