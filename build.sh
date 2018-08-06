@@ -23,7 +23,7 @@ else
 		echo "An existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box download with version '$BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION' was detected."
 		read -p "Do you want to delete it and download again (y/N)? " choice
 		case "$choice" in 
-		  y|Y ) echo "Deleteing existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box ..."
+		  y|Y ) echo "Deleting existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box ..."
 		  		vagrant box remove $BUILD_PARENT_BOX_VAGRANTCLOUD_NAME --box-version $BUILD_PARENT_BOX_VAGRANTCLOUD_VERSION
 		  ;;
 		  * ) echo "Will keep existing '$BUILD_PARENT_BOX_VAGRANTCLOUD_NAME' box.";;
