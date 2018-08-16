@@ -20,7 +20,10 @@
         ["modifyvm","{{.Name}}","--usb","off"],
         ["modifyvm","{{.Name}}","--chipset","ich9"],
         ["modifyvm","{{.Name}}","--rtcuseutc","on"],
-        ["modifyvm","{{.Name}}","--vram", "12"]
+        ["modifyvm","{{.Name}}","--vram", "12"],
+        ["modifyvm","{{.Name}}","--vrde", "off"],
+        ["modifyvm","{{.Name}}","--hpet", "on"],
+        ["modifyvm","{{.Name}}","--spec-ctrl", "on"]
       ]
   }],
   "provisioners": [{
