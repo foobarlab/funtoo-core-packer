@@ -30,12 +30,12 @@ cd /usr/src/linux && sudo make distclean
 # run zerofree at last to squeeze the last bit
 # /boot (initially not mounted)
 sudo mount -o ro /dev/sda1
-sudo zerofree /dev/sda1
+sudo zerofree -v /dev/sda1
 # /
 sudo mount -o remount,ro /dev/sda4
-sudo zerofree /dev/sda4
+sudo zerofree -v /dev/sda4
 # swap
-sudo swapoff /dev/sda3
+sudo swapoff -v /dev/sda3
 sudo bash -c 'dd if=/dev/zero of=/dev/sda3 2>/dev/null' || true
 sudo mkswap /dev/sda3
 SCRIPT
