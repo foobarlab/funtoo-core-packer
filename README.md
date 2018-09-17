@@ -18,7 +18,7 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
     - kernel tools: *genkernel, eclean-kernel*
     - portage utils: *eix, ufed*
     - *vim* as default editor
-    - commandline helpers/tools: *lsof, bash-completion, screen, htop, ncdu, mc*
+    - commandline helpers/tools: *lsof, bash-completion, screen, tmux, htop, ncdu, mc*
 	- network utils: *iptraf-ng, links, ncftp, mutt*
     - any additional software installed in the [stage3 box](https://github.com/foobarlab/funtoo-stage3-packer)
 
