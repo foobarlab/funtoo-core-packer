@@ -45,7 +45,7 @@ DATA
 sudo emerge -vt app-portage/ufed app-portage/eix
 
 # some commandline helpers/utils
-sudo emerge -vt app-shells/bash-completion sys-process/lsof sys-fs/ncdu sys-process/htop app-misc/screen sys-apps/mlocate
+sudo emerge -vt app-shells/bash-completion sys-process/lsof sys-fs/ncdu sys-process/htop app-misc/screen app-misc/tmux sys-apps/mlocate
 
 # some network related utils
 sudo emerge -vt net-analyzer/iptraf-ng www-client/links net-ftp/ncftp mail-client/mutt
