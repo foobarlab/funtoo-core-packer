@@ -11,9 +11,13 @@ sudo eselect editor set vi
 sudo eselect vi set vim
 # add vim to .bashrc
 cat <<'DATA' | sudo tee -a /root/.bashrc
+
+# use vim as default editor
 export EDITOR=/usr/bin/vim
 DATA
 cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
+
+# use vim as default editor
 export EDITOR=/usr/bin/vim
 DATA
 # custom .vimrc
