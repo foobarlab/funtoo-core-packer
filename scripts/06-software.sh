@@ -31,6 +31,8 @@ cat <<'DATA' | sudo tee -a ~vagrant/.vimrc
 setlocal nolist noai
 
 DATA
+# set correct owner for newly created .vimrc for vagrant user
+sudo chown vagrant:vagrant ~vagrant/.vimrc
 
 # install midnight commander + custom setting
 sudo emerge -vt app-misc/mc
