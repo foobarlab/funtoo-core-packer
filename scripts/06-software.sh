@@ -11,9 +11,13 @@ sudo eselect editor set vi
 sudo eselect vi set vim
 # add vim to .bashrc
 cat <<'DATA' | sudo tee -a /root/.bashrc
+
+# use vim as default editor
 export EDITOR=/usr/bin/vim
 DATA
 cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
+
+# use vim as default editor
 export EDITOR=/usr/bin/vim
 DATA
 # custom .vimrc
@@ -27,6 +31,8 @@ cat <<'DATA' | sudo tee -a ~vagrant/.vimrc
 setlocal nolist noai
 
 DATA
+# set correct owner for newly created .vimrc for vagrant user
+sudo chown vagrant:vagrant ~vagrant/.vimrc
 
 # install midnight commander + custom setting
 sudo emerge -vt app-misc/mc
