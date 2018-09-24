@@ -25,10 +25,16 @@ cat <<'DATA' | sudo tee -a /root/.vimrc
 " default to no visible whitespace (was enabled in global /etc/vim/vimrc)
 setlocal nolist noai
 
+set foldmethod=indent       " automatically fold by indent level
+set nofoldenable            " ... but have folds open by default
+
 DATA
 cat <<'DATA' | sudo tee -a ~vagrant/.vimrc
 " default to no visible whitespace (was enabled in global /etc/vim/vimrc)
 setlocal nolist noai
+
+set foldmethod=indent       " automatically fold by indent level
+set nofoldenable            " ... but have folds open by default
 
 DATA
 # set correct owner for newly created .vimrc for vagrant user
