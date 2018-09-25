@@ -26,7 +26,8 @@ SCRIPT
 
 $script_cleanup = <<SCRIPT
 # clean kernel sources after vbox-guest-additions install
-cd /usr/src/linux && sudo make distclean
+cd /usr/src/linux
+sudo make distclean
 # run zerofree at last to squeeze the last bit
 # /boot (initially not mounted)
 sudo mount -o ro /dev/sda1
