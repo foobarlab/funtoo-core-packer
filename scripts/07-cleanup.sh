@@ -17,7 +17,7 @@ sudo find /etc/ -name '._cfg*'				# DEBUG: list all remaining config files needi
 sudo etc-update --automode -5				# force 'auto-merge' for remaining configs 
 
 sudo eselect kernel list
-sudo boot-update
+sudo ego boot
 
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
