@@ -37,7 +37,7 @@ BTRFS="no"
 FIRMWARE="yes"	# include cpu microcode firmware
 FIRMWARE_SRC="/lib/firmware"
 DISKLABEL="yes"
-BOOTLOADER=""	# grub not needed, we will use ego boot command
+BOOTLOADER=""	# grub not needed, we will use boot-update (ego boot) command
 TMPDIR="/var/tmp/genkernel"
 BOOTDIR="/boot"
 GK_SHARE="${GK_SHARE:-/usr/share/genkernel}"
@@ -102,4 +102,4 @@ display {
 }
 DATA
 
-sudo ego boot
+sudo boot-update
