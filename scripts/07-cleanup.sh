@@ -25,6 +25,8 @@ sudo rm -rf /var/cache/portage/distfiles/*
 sudo rm -rf /var/git/meta-repo
 sudo rm -rf /var/log/*
 
+sudo chown portage:portage /var/cache/eix
+
 sudo sync
 
 # simple way to claim some free space before export
