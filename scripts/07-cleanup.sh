@@ -8,7 +8,7 @@ fi
 sudo env-update
 source /etc/profile
 
-sudo emerge --depclean
+sudo emerge --verbose --depclean
 
 sudo etc-update --preen
 sudo rm -f /etc/._cfg0000_boot.conf			# prevent replacement of our boot.conf
