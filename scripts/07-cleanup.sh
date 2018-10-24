@@ -8,7 +8,7 @@ fi
 sudo env-update
 source /etc/profile
 
-sudo emerge --depclean
+sudo emerge --verbose --depclean
 
 sudo etc-update --preen
 sudo rm -f /etc/._cfg0000_boot.conf			# prevent replacement of our boot.conf
@@ -24,6 +24,8 @@ sudo rm -f /etc/resolv.conf.bak
 sudo rm -rf /var/cache/portage/distfiles/*
 sudo rm -rf /var/git/meta-repo
 sudo rm -rf /var/log/*
+
+sudo chown portage:portage /var/cache/eix
 
 sudo sync
 
