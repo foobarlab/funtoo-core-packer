@@ -56,7 +56,15 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--vram", "12"]
     vb.customize ["modifyvm", :id, "--vrde", "off"]
     vb.customize ["modifyvm", :id, "--hpet", "on"]
+    vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+    vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
+    # cpu sidechannel (spectre/meltdown/l1tf) defense options (with some performance penalties):
     vb.customize ["modifyvm", :id, "--spec-ctrl", "on"]
+    vb.customize ["modifyvm", :id, "--ibpb-on-vm-entry", "on"]
+    vb.customize ["modifyvm", :id, "--ibpb-on-vm-exit", "on"]
+    vb.customize ["modifyvm", :id, "--l1d-flush-on-sched", "on"]
+    vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
+    vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
   end
   config.ssh.pty = true
   config.ssh.insert_key = false
@@ -64,4 +72,3 @@ Vagrant.configure("2") do |config|
   config.vm.provision "guest-additions", type: "shell", inline: $script_guest_additions
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup
 end
-
