@@ -10,7 +10,7 @@
     "ssh_pty": "true",
     "ssh_username": "{{user `username`}}",
     "ssh_password": "{{user `password`}}",
-    "ssh_wait_timeout": "60s",
+    "ssh_wait_timeout": "30s",
     "ssh_private_key_file": "keys/vagrant",
     "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
     "vboxmanage":[
