@@ -46,3 +46,8 @@ sudo emerge -1v portage
 
 sudo env-update
 source /etc/profile
+
+# debug: print free space/disk usage
+sudo mount /boot
+df -h
+lsblk
