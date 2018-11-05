@@ -26,11 +26,7 @@
         ["modifyvm","{{.Name}}","--hwvirtex", "on"],
         ["modifyvm","{{.Name}}","--vtxvpid", "on"],
         ["modifyvm","{{.Name}}","--spec-ctrl", "on"],
-        ["modifyvm","{{.Name}}","--ibpb-on-vm-entry", "on"],
-        ["modifyvm","{{.Name}}","--ibpb-on-vm-exit", "on"],
-        ["modifyvm","{{.Name}}","--l1d-flush-on-sched", "on"],
-        ["modifyvm","{{.Name}}","--l1d-flush-on-vm-entry", "on"],
-        ["modifyvm","{{.Name}}","--nestedpaging", "off"]
+        ["modifyvm","{{.Name}}","--largepages", "on"]
       ]
   }],
   "provisioners": [{
