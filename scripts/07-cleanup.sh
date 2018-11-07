@@ -33,4 +33,4 @@ sudo sync
 sudo bash -c 'dd if=/dev/zero of=/EMPTY bs=1M 2>/dev/null' || true
 sudo rm -f /EMPTY
 
-cat /dev/null > ~/.bash_history && history -c && exit
+bash -c 'cat /dev/null > ~/.bash_history && history -c && exit'
