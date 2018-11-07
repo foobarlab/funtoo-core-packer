@@ -29,6 +29,9 @@ DATA
 sudo ego sync
 
 sudo epro mix-ins +no-systemd
+sudo epro list
+
+lsblk
 
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd

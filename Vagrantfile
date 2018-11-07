@@ -28,6 +28,10 @@ $script_cleanup = <<SCRIPT
 # clean kernel sources after vbox-guest-additions install
 cd /usr/src/linux
 sudo make distclean
+# once more ensure old kernels/modules are removed
+sudo eclean-kernel -n 1
+# update grub
+sudo boot-update
 # run zerofree at last to squeeze the last bit
 # /boot (initially not mounted)
 sudo mount -o ro /dev/sda1
@@ -50,6 +54,8 @@ Vagrant.configure("2") do |config|
     vb.memory = "#{ENV['BUILD_GUEST_MEMORY']}"
     vb.cpus = "#{ENV['BUILD_GUEST_CPUS']}"
     # customize virtualbox settings, see also virtualbox.json
+    vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
+    vb.customize ["modifyvm", :id, "--nictype2", "virtio"]
     vb.customize ["modifyvm", :id, "--audio", "none"]
     vb.customize ["modifyvm", :id, "--usb", "off"]
     vb.customize ["modifyvm", :id, "--rtcuseutc", "on"]
@@ -59,14 +65,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--hpet", "on"]
     vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
     vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
-    # cpu sidechannel (spectre/meltdown/l1tf) defense options (with some performance penalties):
     vb.customize ["modifyvm", :id, "--spec-ctrl", "on"]
-    #vb.customize ["modifyvm", :id, "--ibpb-on-vm-entry", "on"]			# enable if paranoid, severe impact on performance
-    #vb.customize ["modifyvm", :id, "--ibpb-on-vm-exit", "on"]			# enable if paranoid, severe impact on performance
-    #vb.customize ["modifyvm", :id, "--l1d-flush-on-sched", "off"]		# default is on, see virtualbox security recommendations: https://www.virtualbox.org/manual/ch13.html#sec-rec-cve-2018-3646	
-    #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]	# enable if paranoid, big impact on performance
-    #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]			# enable if paranoid, severe impact on performance
-    # when nested paging is active:
     vb.customize ["modifyvm", :id, "--largepages", "on"]
   end
   config.ssh.pty = true
