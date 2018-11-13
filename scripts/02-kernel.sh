@@ -59,11 +59,12 @@ sudo eselect kernel list
 
 sudo emerge -vt sys-firmware/intel-microcode sys-apps/iucode_tool
 
-sudo emerge -vt --unmerge sys-kernel/debian-sources
+sudo emerge -vt --unmerge sys-kernel/debian-sources || true
+sudo emerge -vt --unmerge sys-kernel/debian-sources-lts || true
 
 sudo rm -rf /usr/src/linux-debian-sources-*
 
-sudo emerge -vt sys-kernel/debian-sources
+sudo emerge -vt sys-kernel/debian-sources-lts
 
 sudo eselect kernel list
 sudo eselect kernel set 1

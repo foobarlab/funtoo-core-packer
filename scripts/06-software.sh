@@ -37,10 +37,10 @@ set foldmethod=indent       " automatically fold by indent level
 set nofoldenable            " ... but have folds open by default
 
 DATA
-# set correct owner for newly created .vimrc for vagrant user
+# set correct owner for newly created .vimrc for 'vagrant' user
 sudo chown vagrant:vagrant ~vagrant/.vimrc
 
-# install midnight commander + custom setting
+# install Midnight Commander + custom setting
 sudo emerge -vt app-misc/mc
 cat <<'DATA' | sudo tee -a /root/.bashrc
 # restart mc with last used folder
@@ -53,7 +53,7 @@ cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
 
 DATA
 
-# gentoo/funtoo related helper tools
+# Gentoo/Funtoo related helper tools
 sudo emerge -vt app-portage/ufed app-portage/eix
 
 # some commandline helpers/utils

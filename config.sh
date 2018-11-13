@@ -19,7 +19,7 @@ export BUILD_BOX_PROVIDER="virtualbox"
 
 export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 
-export BUILD_BOX_RELEASE_NOTES="Funtoo 1.2, Debian Kernel, GCC 7.3.1, VirtualBox Guest Additions 5.2.20"	# edit this to reflect actual setup
+export BUILD_BOX_RELEASE_NOTES="Funtoo 1.2, Debian Kernel 4.9 LTS, GCC 7.3.1, VirtualBox Guest Additions 5.2.22"	# edit this to reflect actual setup
 
 BUILD_BOX_DESCRIPTION="$BUILD_BOX_NAME version $BUILD_BOX_VERSION"
 if [ -z ${BUILD_TAG+x} ]; then
@@ -27,17 +27,17 @@ if [ -z ${BUILD_TAG+x} ]; then
 	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION (custom)"
 else
 	# with env var BUILD_TAG set
-	# NOTE: for jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
+	# NOTE: for Jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
 	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION ($BUILD_TAG)"
 fi
 export BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br>$BUILD_BOX_RELEASE_NOTES"
 
-export BUILD_GCC_VERSION=""				# specify which gcc version to install or leave empty to keep the default
-export BUILD_REBUILD_SYSTEM=false		# set to true when gcc version is not default 
+export BUILD_GCC_VERSION=""				# specify which GCC version to install or leave empty to keep the default
+export BUILD_REBUILD_SYSTEM=false		# set to true when GCC version is not default 
 
 export BUILD_KEEP_MAX_CLOUD_BOXES=7		# set the maximum number of boxes to keep in Vagrant Cloud
 
-# get the latest parent version from vagrant cloud api call:
+# get the latest parent version from Vagrant Cloud API call:
 . parent_version.sh
 
 if [ $# -eq 0 ]; then

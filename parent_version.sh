@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# get the lastest version number for a parent box from vagrant cloud
+# get the lastest version number for a parent box from Vagrant Cloud
 # see: https://www.vagrantup.com/docs/vagrant-cloud/api.html#boxes
 
 if [ -z ${BUILD_BOX_NAME:-} ]; then
