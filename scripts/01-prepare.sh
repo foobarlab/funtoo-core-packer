@@ -17,15 +17,8 @@ DATA
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
 sys-kernel/genkernel -cryptsetup
-# TODO remove debian-sources when switch to lts happened
-sys-kernel/debian-sources -binary
 sys-kernel/debian-sources-lts -binary
 sys-firmware/intel-microcode initramfs
-DATA
-
-sudo mkdir -p /etc/portage/package.accept_keywords
-cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/vbox-kernel
->=sys-kernel/debian-sources-4.17 **
 DATA
 
 sudo ego sync
