@@ -3,7 +3,7 @@
 # this script will use an existing box version
 # or generate a new box version in semantic
 # versioning format: major.minor.buildnumber
-# as required by vagrant
+# as required by Vagrant
 
 if [ -f build_version ]; then
 	BUILD_BOX_VERSION=$(<build_version)

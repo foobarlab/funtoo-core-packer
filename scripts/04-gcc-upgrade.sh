@@ -10,7 +10,7 @@ if [ -z ${BUILD_GCC_VERSION:-} ]; then
 	exit 0
 fi
 
-# install gcc, see: https://wiki.gentoo.org/wiki/Upgrading_GCC
+# install GCC, see: https://wiki.gentoo.org/wiki/Upgrading_GCC
 
 echo "Installing GCC ${BUILD_GCC_VERSION} ..."
 

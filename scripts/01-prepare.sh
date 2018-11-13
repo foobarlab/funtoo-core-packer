@@ -17,7 +17,9 @@ DATA
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
 sys-kernel/genkernel -cryptsetup
+# TODO remove debian-sources when switch to lts happened
 sys-kernel/debian-sources -binary
+sys-kernel/debian-sources-lts -binary
 sys-firmware/intel-microcode initramfs
 DATA
 
