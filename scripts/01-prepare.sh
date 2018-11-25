@@ -21,6 +21,8 @@ PORTAGE_ELOG_SYSTEM="echo save save_summary"
 # TODO custom command for portage logging: put all logs somewhere before they are lost (e.g. whenever packer fails) 
 #PORTAGE_ELOG_SYSTEM="custom echo save"
 #PORTAGE_ELOG_COMMAND="/path/to/logprocessor -p '\${PACKAGE}' -f '\${LOGFILE}'"
+# TODO custom clean command:
+#PORT_LOGDIR_CLEAN="find \"\${PORT_LOGDIR}\" -type f ! -name \"summary.log*\" -mtime +7 -delete"
 DATA
 
 sudo mkdir -p /etc/portage/package.use
