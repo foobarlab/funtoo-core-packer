@@ -16,7 +16,7 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
  - List of additional installed software:
     - *virtualbox-guest-additions* (vboxguest, vboxsf and vboxvideo modules)
     - Kernel tools: *genkernel, eclean-kernel*
-    - Portage utils: *eix, ufed*
+    - Portage utils: *eix, ufed, elogv*
     - *vim* as default editor
     - Commandline helpers/tools: *lsof, bash-completion, screen, tmux, htop, ncdu, mc*
 	- Network utils for www, ftp and email: *links, ncftp, mutt*
