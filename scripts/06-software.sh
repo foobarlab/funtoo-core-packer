@@ -54,10 +54,10 @@ cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
 DATA
 
 # Gentoo/Funtoo related helper tools
-sudo emerge -vt app-portage/ufed app-portage/eix
+sudo emerge -vt app-portage/ufed app-portage/eix app-portage/elogv
 
 # some commandline helpers/utils
 sudo emerge -vt app-shells/bash-completion sys-process/lsof sys-fs/ncdu sys-process/htop app-misc/screen app-misc/tmux sys-apps/mlocate
 
 # some network related utils
-sudo emerge -vt net-analyzer/iptraf-ng www-client/links net-ftp/ncftp mail-client/mutt
+sudo emerge -vt www-client/links net-ftp/ncftp mail-client/mutt

@@ -14,12 +14,12 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
  - Kernel: debian-sources-lts 4.9, stripped down for use with VirtualBox
  - Optional: switch and rebuild GCC version (experimental, untested)
  - List of additional installed software:
-    - *virtualbox-guest-additions* (vboxguest and vboxsf modules, no vboxvideo)
+    - *virtualbox-guest-additions* (vboxguest, vboxsf and vboxvideo modules)
     - Kernel tools: *genkernel, eclean-kernel*
-    - Portage utils: *eix, ufed*
+    - Portage utils: *eix, ufed, elogv*
     - *vim* as default editor
     - Commandline helpers/tools: *lsof, bash-completion, screen, tmux, htop, ncdu, mc*
-	- Network utils: *iptraf-ng, links, ncftp, mutt*
+	- Network utils for www, ftp and email: *links, ncftp, mutt*
     - Any additional software installed in the [stage3 box](https://github.com/foobarlab/funtoo-stage3-packer)
 
 ### Download pre-build images

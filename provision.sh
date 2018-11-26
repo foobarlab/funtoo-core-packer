@@ -18,7 +18,8 @@ for script in \
   04-gcc-upgrade \
   05-rebuild-system \
   06-software \
-  07-cleanup
+  07-postprocess \
+  08-cleanup
 do
   echo "**** Running $script ******"
   "$SCRIPTS/scripts/$script.sh"

@@ -11,7 +11,18 @@ sed -i 's/<br>/\n/g' /home/vagrant/.$BUILD_BOX_NAME
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
+FEATURES="split-elog clean-logs"
 VIDEO_CARDS="virtualbox"
+# TODO portage logging: log everything (only debugging for now, keep logging on a minimum later!)
+#PORT_LOGDIR="/var/log/portage"
+#PORTAGE_ELOG_CLASSES="warn error qa"
+PORTAGE_ELOG_CLASSES="info warn error log qa"
+PORTAGE_ELOG_SYSTEM="echo save save_summary"
+# TODO custom command for portage logging: put all logs somewhere before they are lost (e.g. whenever packer fails) 
+#PORTAGE_ELOG_SYSTEM="custom echo save"
+#PORTAGE_ELOG_COMMAND="/path/to/logprocessor -p '\${PACKAGE}' -f '\${LOGFILE}'"
+# TODO custom clean command:
+#PORT_LOGDIR_CLEAN="find \"\${PORT_LOGDIR}\" -type f ! -name \"summary.log*\" -mtime +7 -delete"
 DATA
 
 sudo mkdir -p /etc/portage/package.use
@@ -19,6 +30,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kernel
 sys-kernel/genkernel -cryptsetup
 sys-kernel/debian-sources-lts -binary
 sys-firmware/intel-microcode initramfs
+DATA
+
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
+app-misc/mc -edit -slang
 DATA
 
 sudo ego sync
