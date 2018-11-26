@@ -5,7 +5,7 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# net-mail/mailbase: adjust permissions as recommended during install 
+# net-mail/mailbase: adjust permissions as recommended during install
 sudo chown root:mail /var/spool/mail/
 sudo chmod 03775 /var/spool/mail/
 
@@ -14,4 +14,3 @@ sudo sed -i 's/PRUNEPATHS="/PRUNEPATHS="\/vagrant /g' /etc/updatedb.conf
 
 # check dynamic linking consistency
 sudo revdep-rebuild
- 
