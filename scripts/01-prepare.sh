@@ -32,6 +32,10 @@ sys-kernel/debian-sources-lts -binary
 sys-firmware/intel-microcode initramfs
 DATA
 
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
+app-misc/mc -edit -slang
+DATA
+
 sudo ego sync
 
 sudo epro mix-ins +no-systemd
