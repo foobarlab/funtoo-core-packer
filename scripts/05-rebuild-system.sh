@@ -16,10 +16,10 @@ else
 fi
 
 sudo emerge -vt --emptytree --usepkg=n @system
-sudo etc-update --preen
+sudo etc-update --verbose --preen
 
 sudo emerge -vt --emptytree --usepkg=n @world
-sudo etc-update --preen
+sudo etc-update --verbose --preen
 
 sudo emerge -vt @preserved-rebuild
 

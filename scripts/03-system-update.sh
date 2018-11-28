@@ -7,7 +7,7 @@ fi
 
 sudo emerge -vtuDN --with-bdeps=y @world
 
-sudo etc-update --preen
+sudo etc-update --verbose --preen
 
 sudo emerge -vt @preserved-rebuild
 
