@@ -17,7 +17,7 @@ sudo rm -f /etc/._cfg0000_genkernel.conf	# prevent replacement of our genkernel.
 sudo rm -f /etc/._cfg0000_updatedb.conf		# prevent replacement of our updatedb.conf
 
 sudo find /etc/ -name '._cfg*'				# DEBUG: list all remaining config files needing an update
-sudo etc-update --verbose --automode -5		# force 'auto-merge' for remaining configs 
+sudo etc-update --verbose --automode -5		# force 'auto-merge' for remaining configs
 
 sudo eselect kernel list
 sudo boot-update
