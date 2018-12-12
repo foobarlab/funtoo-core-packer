@@ -22,6 +22,8 @@ sudo gpasswd -a vagrant vboxsf
 cat <<'DATA' | sudo tee -a /etc/conf.d/modules
 modules="vboxsf"
 DATA
+# remove iso
+sudo rm -f /home/vagrant/VBoxGuestAdditions.iso
 SCRIPT
 
 $script_cleanup = <<SCRIPT
