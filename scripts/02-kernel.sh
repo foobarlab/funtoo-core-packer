@@ -47,7 +47,7 @@ LOGFILE="/var/log/genkernel.log"
 LOGLEVEL=2
 DEFAULT_KERNEL_SOURCE="/usr/src/linux"
 DEFAULT_KERNEL_CONFIG="/usr/src/kernel.config"
-KNAME="genkernel"
+KNAME="debian-sources-lts"
 REAL_ROOT="/dev/sda4"
 CMD_CALLBACK="emerge --quiet @module-rebuild"
 DATA
