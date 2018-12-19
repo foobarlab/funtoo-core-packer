@@ -5,8 +5,8 @@ It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funt
 
 ### What's included?
 
- - Minimal Funtoo Linux installation with core flavor
- - Architecture: pure64, generic_64 (currently only on Intel CPU, no AMD support)
+ - Minimal Funtoo Linux 1.3 installation with core flavor
+ - Architecture: pure64, generic_64
  - 20 GB dynamic sized HDD image (ext4)
  - Timezone: ```UTC```
  - NAT Networking using DHCP (virtio)
