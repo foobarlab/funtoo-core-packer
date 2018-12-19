@@ -30,7 +30,7 @@ else
 	# NOTE: for Jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
 	BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION ($BUILD_TAG)"
 fi
-export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP"
+export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP"
 
 export BUILD_GCC_VERSION=""				# specify which GCC version to install or leave empty to keep the default
 export BUILD_REBUILD_SYSTEM=false		# set to true when GCC version is not default 
