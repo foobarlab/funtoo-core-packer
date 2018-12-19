@@ -33,7 +33,7 @@ sys-firmware/intel-microcode initramfs
 DATA
 
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
-sys-boot/grub -fonts -truetype 
+sys-boot/grub -fonts
 app-misc/mc -edit -slang
 DATA
 
