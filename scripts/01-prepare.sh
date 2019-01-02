@@ -9,7 +9,7 @@ echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.$BUILD_BOX_NAME
 sed -i 's/<br>/\n/g' /home/vagrant/.$BUILD_BOX_NAME
 
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
-USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lz4 lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
+USE="acl acpi bash-completion bindist cacert git gold hwdb icu idn iptables kmod lzma lzo networkmanager ncurses pci pgo pic pie posix rdp readline recursion-limit smp syslog threads tools udev udisks unicode unwind upnp utils zlib -systemd"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
 FEATURES="split-elog clean-logs"
 VIDEO_CARDS="virtualbox"
@@ -33,6 +33,8 @@ sys-firmware/intel-microcode initramfs
 DATA
 
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
+# FIXME avoid pull-in of media-libs/freetype:
+#sys-boot/grub -fonts -themes -truetype
 app-misc/mc -edit -slang
 DATA
 
