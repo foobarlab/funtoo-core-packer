@@ -80,17 +80,20 @@ sudo mv -f /usr/src/linux/.config /usr/src/kernel.config
 
 sudo genkernel --kernel-config=/usr/src/kernel.config --install initramfs all
 
-sudo emerge -vt app-admin/eclean-kernel
+# eclean-kernel disabled for debugging
+#sudo emerge -vt app-admin/eclean-kernel
+#
+## FIXME: DEBUG: currently eclean-kernel -n 1 uninstalls the only kernel installed
+#sudo eclean-kernel -l
+#sudo eclean-kernel -p -n 1
+#
+#sudo eclean-kernel -n 1
+#
+## FIXME: DEBUG: switch to an existing dir in case /usr/src/linux was deleted
+#pwd
+#cd /root
 
-# FIXME: DEBUG: currently eclean-kernel -n 1 uninstalls the only kernel installed
-sudo eclean-kernel -l
-sudo eclean-kernel -p -n 1
-
-sudo eclean-kernel -n 1
-
-# FIXME: DEBUG: switch to an existing dir in case /usr/src/linux was deleted
-pwd
-cd /root
+cd /usr/src
 
 sudo env-update
 source /etc/profile
