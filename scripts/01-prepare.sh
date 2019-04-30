@@ -38,6 +38,11 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-defaults
 app-misc/mc -edit -slang
 DATA
 
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-fixes
+# FIX need to apply policykit USE flag in consolekit after pam/pambase updates (April 2019):
+>=sys-auth/consolekit-0.4.6 policykit
+DATA
+
 sudo ego sync
 
 sudo epro mix-ins +no-systemd
