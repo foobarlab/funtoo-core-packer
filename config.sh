@@ -32,7 +32,7 @@ else
 fi
 export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP"
 
-export BUILD_GCC_VERSION=""				# specify which GCC version to install or leave empty to keep the default
+export BUILD_GCC_VERSION="9.1.1"		# specify which GCC version to install or leave empty to keep the default
 export BUILD_REBUILD_SYSTEM=true		# set to true when GCC version is not default 
 
 export BUILD_KEEP_MAX_CLOUD_BOXES=7		# set the maximum number of boxes to keep in Vagrant Cloud
