@@ -12,8 +12,7 @@ sudo chmod 03775 /var/spool/mail/
 # sys-apps/mlocate: add shared folder (usually '/vagrant') to /etc/updatedb.conf prune paths to avoid leaking shared files
 sudo sed -i 's/PRUNEPATHS="/PRUNEPATHS="\/vagrant /g' /etc/updatedb.conf
 
-# app-portage/eix: fix permissions
-sudo chown portage:portage /var/cache/eix
+sudo emerge -vt @preserved-rebuild
 
 # check dynamic linking consistency
 sudo revdep-rebuild
