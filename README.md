@@ -1,5 +1,7 @@
 # Funtoo Core Vagrant box
 
+**This repository is not maintained anymore as of July 2020!**
+
 This is a minimal core Funtoo Linux that is packaged into a Vagrant box file. Currently only a VirtualBox version is provided.
 It is based on the [Funtoo Stage3 Vagrant box](https://github.com/foobarlab/funtoo-stage3-packer). This box serves for bootstrapping an initial base box for the [Funtoo Server Vagrant box](https://github.com/foobarlab/funtoo-server-packer).
 
